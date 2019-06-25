@@ -31,6 +31,7 @@ typedef struct		s_room
 	char			*name;
   int       ant_cur; // index of ant / -1
   int       type; //start / end / middle
+  ssize_t   i;
 	int				nb_links;
 	t_list			*links;
 	int				flag;
