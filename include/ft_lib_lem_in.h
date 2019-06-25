@@ -37,6 +37,12 @@ typedef struct		s_room
   t_data    *data;
 }					t_room;
 
+typedef struct s_roomlst
+{
+  t_room *r;
+  struct s_roomlst *next;
+} t_roomlst;
+
 typedef struct		s_global
 {
 	t_room			*start;
