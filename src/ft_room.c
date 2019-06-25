@@ -26,3 +26,21 @@ t_room *ft_room_init()
   r->data = NULL;
   return (r);
 }
+
+void ft_room_free(t_room **room)
+{
+  t_room *r;
+
+  if (room)
+  {
+    r = *room;
+    if (r->name)
+      free(r->name);
+    if (r->links)
+      ft_lstdel(&links, &ft_lstdelone);
+    if (r->data)
+      free(data);
+    free(*room);
+    *room = NULL;
+  }
+}

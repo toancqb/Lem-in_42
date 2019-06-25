@@ -1,23 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_roomlst_init.c                                  :+:      :+:    :+:   */
+/*   ft_roomlst_add_push.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/25 14:13:33 by qtran             #+#    #+#             */
-/*   Updated: 2019/06/25 14:13:34 by qtran            ###   ########.fr       */
+/*   Created: 2019/06/25 14:13:40 by qtran             #+#    #+#             */
+/*   Updated: 2019/06/25 14:13:41 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/ft_lib_lem_in.h"
 
-t_roomlst *ft_roomlst_init(t_room *room)
+void ft_roomlst_add(t_roomlst **lst, t_roomlst *elem)
 {
-  t_roomlst *r;
+  if (lst)
+  {
+    if (*lst == NULL)
+      *lst = elem;
+    else
+    {
+      elem->next = *lst;
+      *lst = elem;
+    }
+  }
+}
 
-  r = (t_roomlst*)malloc(sizeof(t_roomlst));
-  r->r = room;
-  r->next = NULL;
-  return (r);
+void ft_roomlst_push(t_roomlst **lst, t_roomlst *elem)
+{
+  t_roomlst *tmp;
+
+  if (lst)
+  {
+    if (*lst == NULL)
+      *lst = elem;
+    else
+    {
+      tmp = *lst;
+      while (tmp->next != NULL)
+        tmp = tmp->next;
+      tmp->next = elem;
+    }
+  }
 }
