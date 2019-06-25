@@ -59,6 +59,8 @@ t_room *ft_room_init();
 void ft_room_free(t_room **room);
 t_roomlst *ft_roomlst_init(t_room *room);
 int ft_roomlst_len(t_roomlst *lst);
+void f_print_roomlst(t_roomlst *r);
+void ft_roomlst_iter(t_roomlst *lst, void (*f)(t_roomlst *r));
 void ft_roomlst_add(t_roomlst **lst, t_roomlst *elem);
 void ft_roomlst_push(t_roomlst **lst, t_roomlst *elem);
 t_roomlst *ft_roomlst_shift(t_roomlst **lst);

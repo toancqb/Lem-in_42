@@ -33,7 +33,7 @@ t_roomlst *ft_roomlst_pop(t_roomlst **lst)
 
   if (lst)
   {
-    if (*lst->next == NULL)
+    if ((*lst)->next == NULL)
     {
       pop = *lst;
       *lst = NULL;

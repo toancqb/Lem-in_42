@@ -36,10 +36,10 @@ void ft_room_free(t_room **room)
     r = *room;
     if (r->name)
       free(r->name);
-    if (r->links)
-      ft_lstdel(&links, &ft_lstdelone);
+    //if (r->links)
+    //  ft_lstdel(&(r->links), &ft_lstdelone);
     if (r->data)
-      free(data);
+      free(r->data);
     free(*room);
     *room = NULL;
   }

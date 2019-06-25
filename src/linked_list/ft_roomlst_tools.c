@@ -17,10 +17,28 @@ int ft_roomlst_len(t_roomlst *lst)
   int len;
 
   len = 0;
-  while (*lst != NULL)
+  while (lst != NULL)
   {
     len++;
-    *lst = (*lst)->next;
+    lst = lst->next;
   }
   return (len);
+}
+
+void f_print_roomlst(t_roomlst *r)
+{
+  ft_putstr(r->r->name);
+  ft_putstr("\n");
+}
+
+void ft_roomlst_iter(t_roomlst *lst, void (*f)(t_roomlst *r))
+{
+  if (lst)
+  {
+    while (lst != NULL)
+    {
+      f(lst);
+      lst = lst->next;
+    }
+  }
 }

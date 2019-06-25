@@ -22,7 +22,7 @@ void ft_roomlst_delall(t_roomlst **lst)
     {
       tmp = *lst;
       *lst = (*lst)->next;
-      ft_room_free(tmp->r);
+      ft_room_free(&(tmp->r));
       tmp->next = NULL;
       free(tmp);
     }
