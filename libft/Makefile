@@ -6,7 +6,7 @@
 #    By: qtran <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/22 12:52:49 by qtran             #+#    #+#              #
-#    Updated: 2019/04/22 12:52:50 by qtran            ###   ########.fr        #
+#    Updated: 2019/06/25 11:45:53 by qtran            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,13 @@ SOURCES_LIST = \
 	ft_strsplit_len.c\
 	ft_wchar_size.c\
 	ft_atoi_long.c\
-	ft_wcslen.c
+	ft_wcslen.c\
+	ft_lstadd.c\
+	ft_lstdelone.c\
+	ft_lstdel.c\
+	ft_lstaddback.c\
+	ft_lstiter.c\
+	ft_lstmap.c
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 OBJECTS_DIRECTORY = objects/
 OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES_LIST))
