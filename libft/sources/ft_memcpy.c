@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/25 11:25:04 by qtran             #+#    #+#             */
-/*   Updated: 2019/06/25 12:00:11 by qtran            ###   ########.fr       */
+/*   Created: 2019/06/25 13:02:31 by qtran             #+#    #+#             */
+/*   Updated: 2019/06/25 13:02:33 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_lib_lem_in.h"
+#include "libft.h"
 
-void f_print(t_list *elem)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	ft_putstr((char*)elem->content);
-	ft_putstr("\n");
-}
+	unsigned char	*d;
+	unsigned char	*s;
 
-void test_lst()
-{
-	t_list *master;
-	char *s;
-
-	ft_lstadd(&master, ft_lstnew((void*)"111", 3));
-	ft_lstadd(&master, ft_lstnew((void*)"222", 3));
-	ft_lstiter(master, &f_print);
-	ft_putstr(s);
-}
-
-int main(void)
-{
-	test_lst();
-	return (0);
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	while (n--)
+		*d++ = *s++;
+	return (dst);
 }
