@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_solution_manipulators.c                         :+:      :+:    :+:   */
+/*   ft_pathlst_manipulators.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/27 16:11:30 by gly               #+#    #+#             */
-/*   Updated: 2019/06/27 16:12:58 by gly              ###   ########.fr       */
+/*   Created: 2019/06/27 09:41:51 by gly               #+#    #+#             */
+/*   Updated: 2019/06/27 09:52:28 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "ft_find_solution.h"
+#include "ft_get_solution.h"
 
-t_solution	*ft_solution_new(void)
+t_pathlst	*ft_pathlst_new(t_roomlst *path, int n_step)
 {
-	t_solution	*new;
+	t_pathlst	new;
 
-	if (!(new = malloc(sizeof(t_solution))))
+	if (!(new = malloc(sizeof(t_pathlst))))
 		return (NULL);
-	ft_bzero(new, sizeof(t_solution));
+	new->path = path;
+	new->n_step = n_step;
+	new->next = NULL;
 	return (new);
 }
 
-void		ft_free_solution(t_solution **solution)
+int			ft_pathlst_add(t_pathlst **pathlst, t_pathlst *elem)
 {
-	t_pathlst		*tmp;
-	t_pathlst		*next;
-
-	tmp = (*solution)->pathlst;
-	while (tmp != NULL)
+	if (pathlst == NULL)
+		return (1);
+	if (*pathlst == NULL)
+		*pathlst = elem;
+	else
 	{
-		ft_roomlst_delall(&(tmp->path));
-		next = tmp->next;
-		free(tmp);
-		tmp = next;
+		elem->next = *pathlst;
+		*pathlst = elem;
 	}
-	free(*solution);
+	return (0);
 }
