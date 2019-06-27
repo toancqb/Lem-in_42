@@ -27,6 +27,15 @@ t_room *ft_room_init()
   return (r);
 }
 
+t_room *ft_room_new(char *name)
+{
+	t_room *r;
+
+	r = ft_room_init();
+	r->name = ft_strdup(name);
+	return (r);
+}
+
 void ft_room_free(t_room **room)
 {
   t_room *r;

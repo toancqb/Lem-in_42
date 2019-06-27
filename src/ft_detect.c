@@ -31,7 +31,7 @@ int is_comment(char *line)
   return (0);
 }
 
-int is_nb_ants(char *line)
+int is_nb_ant(char *line)
 {
   int i;
 
@@ -47,7 +47,7 @@ int is_nb_ants(char *line)
   return (1);
 }
 
-int is_mem(char *line)
+int is_room(char *line)
 {
   int i;
   int count;

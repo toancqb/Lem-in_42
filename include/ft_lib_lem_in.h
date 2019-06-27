@@ -52,11 +52,13 @@ typedef struct		s_global
 	int				nb_ant;
 	char			**path;
 	char			**working_path;
-	t_room			**rooms;
+	t_roomlst			**rooms;
 }					t_global;
 
 t_room *ft_room_init();
+t_room *ft_room_new(char *name);
 void ft_room_free(t_room **room);
+char *ft_get_name(char *line);
 t_roomlst *ft_roomlst_init(t_room *room);
 int ft_roomlst_len(t_roomlst *lst);
 void f_print_roomlst(t_roomlst *r);
