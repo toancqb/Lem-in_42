@@ -18,3 +18,17 @@ char *ft_get_name(char *line)
   }
   return (name);
 }
+
+t_room *ft_get_room_by_name(t_global *global, char *name)
+{
+  t_roomlst *tmp;
+
+  tmp = *(global->rooms);
+  while (tmp != NULL)
+  {
+    if (!ft_strcmp(tmp->r->name, name))
+      return (tmp->r);
+    tmp = tmp->next;
+  }
+  return (NULL);
+}

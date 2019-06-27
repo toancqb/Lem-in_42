@@ -44,5 +44,20 @@ void ft_parse_room(char *line, t_global *global, int *type, int *index)
 
 void ft_parse_link(char *line, t_global *global)
 {
-  
+  char **tab;
+  t_room *r1;
+  t_room *r2;
+  t_list *tmp[2];
+
+  tab = ft_strsplit(line, '-');
+  r1 = ft_get_room_by_name(global, tab[0]);
+  r2 = ft_get_room_by_name(global, tab[1]);
+  ft_strsplit_free(&tab);
+  (r1->nb_link)++;
+  tmp[0] = (t_list*)malloc(sizeof(t_list));
+  tmp[0]->content = (void*)r2;
+  ft_lstadd(&(r1->link), tmp[0]);
+  tmp[1] = (t_list*)malloc(sizeof(t_list));
+  tmp[1]->content = (void*)r1;
+  ft_lstadd(&(r2->link), tmp[1]);
 }
