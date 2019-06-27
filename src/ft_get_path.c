@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 13:35:14 by gly               #+#    #+#             */
-/*   Updated: 2019/06/27 16:09:26 by gly              ###   ########.fr       */
+/*   Updated: 2019/06/27 17:33:50 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static inline int	ft_get_single_path2(t_global *glob, int i)
 	j = glob->end->i;
 	while (i < glob->nb_rooms)
 	{
-		if (glob->working_path[i][j] & ACTIVE &&
+		if (glob->working_path[i][j] & ACTIVISIT &&
 				!(glob->working_path[i][j] & NEGATIVE))
 		{
 			n_step++;
@@ -43,7 +43,7 @@ static inline int	ft_get_single_path(t_global *glob, int *i,
 {
 	while (*i < glob->nb_rooms)
 	{
-		if (glob->working_path[*i][glob->end->i] & ACTIVE &&
+		if (glob->working_path[*i][glob->end->i] & ACTIVISIT &&
 				!(glob->working_path[*i][glob->end->i] & NEGATIVE))
 			return (ft_get_single_path2(glob, *i, path));
 		(*i)++;

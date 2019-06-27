@@ -6,12 +6,12 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 09:41:51 by gly               #+#    #+#             */
-/*   Updated: 2019/06/27 09:52:28 by gly              ###   ########.fr       */
+/*   Updated: 2019/06/27 17:37:12 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "ft_get_solution.h"
+#include "ft_find_solution.h"
 
 t_pathlst	*ft_pathlst_new(t_roomlst *path, int n_step)
 {
