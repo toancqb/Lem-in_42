@@ -6,41 +6,52 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 12:41:42 by gly               #+#    #+#             */
-/*   Updated: 2019/06/25 18:48:32 by gly              ###   ########.fr       */
+/*   Updated: 2019/06/27 16:05:38 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "ft_find_solution.h"
 
-int		ft_find_path2(t_global *glob, int path_flag, t_roomlst *new_roomlst,
-		t_roomlst *room_lst)
+static inline void	ft_add_room_to_path(t_global *glob,
+		t_room *from, t_room *to)
+{
+	glob->working_path[from->i][to->i] |= VISITED;
+	glob->r_status[to->i] |= VISITED;
+}
+
+static inline int	ft_explore_next_room(t_global *glob, t_roomlst *next_room,
+		t_roomlst **room_lst)
 {
 	t_roomlst	*elem;
 
-	while (new_roomlst != NULL)
+	while (next_room != NULL)
 	{
-		if (new_roomlst->room->flag & path_flag)
+		if (!(glob->r_status[next_room->r->i] & VISITED))
 		{
-			ft_add_room_to_path(glob->working_path, room_lst->r, new_roomlst->r,
-					path_flag);
-			if (new_roomlst->r == glob->end)
+			if (glob->r_status[next_room->r->i] & ACTIVE)
 			{
-				ft_roomlst_delall(&room_lst);
-				return (0);
+				if (ft_explore_backward(glob, room_lst, next_room->r))
+					return (-1);
 			}
-			else if (!(elem = ft_lstnew(new_roomlst->r)))
-				return (-1);
-			ft_lstpush(&room_lst, elem);
+			else
+			{
+				ft_add_room_to_path(glob, (*room_lst)->r, next_room->r);
+				if (next_room->r == glob->end)
+					return (0);
+				else if (!(elem = ft_lstnew(next_room->r)))
+					return (-1);
+				ft_lstpush(room_lst, elem);
+			}
 		}
-		new_roomlst = new_roomlst->next;
+		next_room = next_room->next;
 	}
 	return (1);
 }
 
-int		ft_find_path(t_global *glob, int n)
+int					ft_find_path(t_global *glob)
 {
 	t_roomlst	*room_lst;
-	t_roomlst	*new_roomlst;
 	t_roomlst	*elem;
 	int			ret;
 
@@ -48,11 +59,13 @@ int		ft_find_path(t_global *glob, int n)
 		return (-1);
 	while (room_lst != NULL)
 	{
-		new_roomlst = room_lst->link;
-		if ((ret = ft_find_path2(glob, path_flag, new_roomlst, room_lst)) != 1)
+		if ((ret = ft_explore_next_room(glob,
+						room_lst->r->links, &room_lst)) != 1)
+		{
+			ft_roomlst_delall(&room_lst);
 			return (ret);
-		elem = ft_roomlst_shift(&room_lst);
-		free(elem);
+		}
+		free(ft_roomlst_shift(&room_lst));
 	}
-	return (1);
+	return (0);
 }
