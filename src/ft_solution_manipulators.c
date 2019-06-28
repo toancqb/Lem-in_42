@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_solution_manipulators.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/27 16:11:30 by gly               #+#    #+#             */
+/*   Updated: 2019/06/27 16:12:58 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "ft_find_solution.h"
 
@@ -11,7 +23,7 @@ t_solution	*ft_solution_new(void)
 	return (new);
 }
 
-void	ft_free_solution(t_solution **solution)
+void		ft_free_solution(t_solution **solution)
 {
 	t_pathlst		*tmp;
 	t_pathlst		*next;
