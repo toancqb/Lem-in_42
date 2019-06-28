@@ -87,7 +87,7 @@ void test_input_parse(int argc, char **argv)
 	while (tmp != NULL)
 	{
 		ft_putstr("\n--["); ft_putstr(tmp->r->name); ft_putstr("]--\n");
-		ft_lstiter(*(tmp->r->link), &f_print_tlist);
+		ft_roomlst_iter(*(tmp->r->link), &f_print_roomlst);
 		ft_putstr("\n");
 		tmp = tmp->next;
 	}

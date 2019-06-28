@@ -34,6 +34,7 @@ void ft_parse_room(char *line, t_global *global, int *type, int *index)
   r = ft_room_new(tmp);
   free(tmp);
   r->i = (*index)++;
+  (global->nb_room)++;
   r->ant_cur = -1;
   r->type = *type; // type = 0 -> end || = 1 -> start || = -1 -> mid
   if (*type == 0)
@@ -49,16 +50,19 @@ void ft_parse_link(char *line, t_global *global)
 {
   t_room *r1;
   t_room *r2;
-  t_list *tmp[2];
 
   r1 = ft_get_room_by_line(global, line, 0);
   r2 = ft_get_room_by_line(global, line, 1);
   (r1->nb_link)++;
-  tmp[0] = (t_list*)malloc(sizeof(t_list));
+  ft_roomlst_add(r1->link, ft_roomlst_init(r2));
+  (r2->nb_link)++;
+  ft_roomlst_add(r2->link, ft_roomlst_init(r1));
+  /*tmp[0] = (t_list*)malloc(sizeof(t_list));
   tmp[0]->content = (void*)r2;
   ft_lstadd(r1->link, tmp[0]);
   (r2->nb_link)++;
   tmp[1] = (t_list*)malloc(sizeof(t_list));
   tmp[1]->content = (void*)r1;
-  ft_lstadd(r2->link, tmp[1]);
+  ft_lstadd(r2->link, tmp[1]);*/
+
 }

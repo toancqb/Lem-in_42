@@ -26,6 +26,8 @@ typedef struct s_data
   int level;
 } t_data;
 
+
+
 typedef struct		s_room
 {
 	char			*name;
@@ -33,7 +35,7 @@ typedef struct		s_room
   int       type; //start / end / middle
   ssize_t   i;
 	int				nb_link;
-	t_list			**link;
+	struct s_roomlst			**link;
 	int				flag;
   t_data    *data;
 }					t_room;

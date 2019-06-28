@@ -22,7 +22,7 @@ t_room *ft_room_init()
   r->nb_link = -1;
   r->flag = -1;
   r->name = NULL;
-  r->link = (t_list**)malloc(sizeof(t_list*));
+  r->link = (t_roomlst**)malloc(sizeof(t_roomlst*));
   *(r->link) = NULL;
   r->data = NULL;
   return (r);
@@ -46,8 +46,8 @@ void ft_room_free(t_room **room)
     r = *room;
     if (r->name)
       free(r->name);
-    //if (r->links)
-    //  ft_lstdel(&(r->links), &ft_lstdelone);
+    //if (r->link)
+    //  ft_lstdel(r->link, &ft_lstdelone);
     if (r->data)
       free(r->data);
     free(*room);
