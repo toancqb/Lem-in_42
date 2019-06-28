@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 15:53:19 by gly               #+#    #+#             */
-/*   Updated: 2019/06/27 16:12:40 by gly              ###   ########.fr       */
+/*   Updated: 2019/06/28 10:42:10 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct		s_pathlst
 {
 	int				n_step;
+	int				nb_ants;
 	t_roomlst		*path;
 	struct s_path	*next;
 }					t_pathlst;
@@ -41,6 +42,7 @@ int				ft_get_path(t_global *glob, t_solution *solution);
 int				ft_add_path(t_global *glob, t_roomlst *room_path);
 int					ft_explore_backward(t_global *glob,
 		t_roomlst **room_lst, t_room *room);
+int					ft_calculate_step(int n_path, t_solution *solution);
 
 int				ft_add_room_to_path(char **working_path, t_room *from, t_room *to,
 		int path_flag);
