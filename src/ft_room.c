@@ -22,7 +22,8 @@ t_room *ft_room_init()
   r->nb_link = -1;
   r->flag = -1;
   r->name = NULL;
-  r->link = NULL;
+  r->link = (t_list**)malloc(sizeof(t_list*));
+  *(r->link) = NULL;
   r->data = NULL;
   return (r);
 }

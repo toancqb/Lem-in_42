@@ -27,8 +27,9 @@ int ft_roomlst_len(t_roomlst *lst)
 
 void f_print_roomlst(t_roomlst *r)
 {
+  ft_putstr("[");
   ft_putstr(r->r->name);
-  ft_putstr("\n");
+  ft_putstr("]->");
 }
 
 void ft_roomlst_iter(t_roomlst *lst, void (*f)(t_roomlst *r))

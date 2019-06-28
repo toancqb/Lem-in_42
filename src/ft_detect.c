@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_lem_in_lib.h"
+#include "../include/ft_lib_lem_in.h"
 
 int is_command(char *line)
 {

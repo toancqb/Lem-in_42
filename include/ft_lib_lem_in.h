@@ -33,7 +33,7 @@ typedef struct		s_room
   int       type; //start / end / middle
   ssize_t   i;
 	int				nb_link;
-	t_list			*link;
+	t_list			**link;
 	int				flag;
   t_data    *data;
 }					t_room;
@@ -60,10 +60,11 @@ t_room *ft_room_init();
 t_room *ft_room_new(char *name);
 void ft_room_free(t_room **room);
 char *ft_get_name(char *line);
-t_room *ft_get_room_by_name(t_global *global, char *name);
+t_room *ft_get_room_by_line(t_global *global, char *line, int flag);
 t_roomlst *ft_roomlst_init(t_room *room);
 int ft_roomlst_len(t_roomlst *lst);
 void f_print_roomlst(t_roomlst *r);
+void f_print_tlist(t_list *elem);
 void ft_roomlst_iter(t_roomlst *lst, void (*f)(t_roomlst *r));
 void ft_roomlst_add(t_roomlst **lst, t_roomlst *elem);
 void ft_roomlst_add_second(t_roomlst **lst, t_roomlst *elem);

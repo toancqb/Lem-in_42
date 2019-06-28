@@ -69,16 +69,36 @@ void test_roomlst()
 	ft_roomlst_delall(&lst);
 }
 
-/*void test_input_parse(int argc, char **argv)
+//gcc main.c ft_room.c ft_input*.c ft_detect.c ft_tools.c linked_list/*.c ../libft/libft.a
+
+void test_input_parse(int argc, char **argv)
 {
 	t_global *g;
+	t_roomlst *tmp;
 
 	g = ft_global_init();
+	ft_input_parsing(g);
 
-}*/
+	//test input parsing
 
-int main(void)
+	ft_roomlst_iter(*(g->rooms), &f_print_roomlst);
+
+	tmp = *(g->rooms);
+	while (tmp != NULL)
+	{
+		ft_putstr("\n--["); ft_putstr(tmp->r->name); ft_putstr("]--\n");
+		ft_lstiter(*(tmp->r->link), &f_print_tlist);
+		ft_putstr("\n");
+		tmp = tmp->next;
+	}
+
+
+
+}
+
+int main(int argc, char *argv[])
 {
-	test_roomlst();
+	//test_roomlst();
+	test_input_parse(argc, argv);
 	return (0);
 }

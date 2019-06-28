@@ -23,7 +23,8 @@ t_global *ft_global_init()
   global->nb_room = 0;
   global->path = NULL;
   global->working_path = NULL;
-  global->rooms = NULL;
+  global->rooms = (t_roomlst**)malloc(sizeof(t_roomlst*));
+  *(global->rooms) = NULL;
   return (global);
 }
 
