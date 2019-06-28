@@ -56,7 +56,26 @@ void test_roomlst()
 	f_print_roomlst(tmp);
 
 	ft_roomlst_delall(&lst);
+
+	ft_putstr("test add seconde \n");
+	lst = NULL;
+	ft_roomlst_push(&lst, ft_roomlst_init(ft_room_new("111")));
+	ft_roomlst_push(&lst, ft_roomlst_init(ft_room_new("222")));
+	ft_roomlst_push(&lst, ft_roomlst_init(ft_room_new("333")));
+	ft_roomlst_push(&lst, ft_roomlst_init(ft_room_new("444")));
+
+	ft_roomlst_add_second(&lst, ft_roomlst_init(ft_room_new("zzz")));
+	ft_roomlst_iter(lst, &f_print_roomlst);
+	ft_roomlst_delall(&lst);
 }
+
+/*void test_input_parse(int argc, char **argv)
+{
+	t_global *g;
+
+	g = ft_global_init();
+
+}*/
 
 int main(void)
 {

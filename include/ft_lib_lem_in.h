@@ -55,6 +55,7 @@ typedef struct		s_global
 	t_roomlst			**rooms;
 }					t_global;
 
+t_global *ft_global_init();
 t_room *ft_room_init();
 t_room *ft_room_new(char *name);
 void ft_room_free(t_room **room);
@@ -65,9 +66,21 @@ int ft_roomlst_len(t_roomlst *lst);
 void f_print_roomlst(t_roomlst *r);
 void ft_roomlst_iter(t_roomlst *lst, void (*f)(t_roomlst *r));
 void ft_roomlst_add(t_roomlst **lst, t_roomlst *elem);
+void ft_roomlst_add_second(t_roomlst **lst, t_roomlst *elem);
 void ft_roomlst_push(t_roomlst **lst, t_roomlst *elem);
 t_roomlst *ft_roomlst_shift(t_roomlst **lst);
 t_roomlst *ft_roomlst_pop(t_roomlst **lst);
 void ft_roomlst_delall(t_roomlst **lst);
+
+int is_command(char *line);
+int is_comment(char *line);
+int is_nb_ant(char *line);
+int is_room(char *line);
+int is_link(char *line);
+void ft_parse_nb_ant(char *line, t_global *global);
+void ft_parse_command(char *line, int *type);
+void ft_parse_room(char *line, t_global *global, int *type, int *index);
+int ft_input_parsing(t_global *global);
+void ft_parse_link(char *line, t_global *global);
 
 #endif

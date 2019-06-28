@@ -12,6 +12,21 @@
 
 #include "../include/ft_lib_lem_in.h"
 
+t_global *ft_global_init()
+{
+  t_global *global;
+
+  global = (t_global*)malloc(sizeof(t_global));
+  global->start = NULL;
+  global->end = NULL;
+  global->nb_ant = 0;
+  global->nb_room = 0;
+  global->path = NULL;
+  global->working_path = NULL;
+  global->rooms = NULL;
+  return (global);
+}
+
 int ft_input_parsing(t_global *global)
 {
   ssize_t size;

@@ -28,8 +28,11 @@ void ft_parse_room(char *line, t_global *global, int *type, int *index)
 {
   t_room *r;
   t_roomlst *rlst;
+  char *tmp;
 
-  r = ft_room_new(ft_get_name(line));
+  tmp = ft_get_name(line);
+  r = ft_room_new(tmp);
+  free(tmp);
   r->i = ((ssize_t)(*index))++;
   r->ant_cur = -1;
   r->type = *type; // type = 0 -> end || = 1 -> start || = -1 -> mid

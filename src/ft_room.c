@@ -19,10 +19,10 @@ t_room *ft_room_init()
   r = (t_room*)malloc(sizeof(t_room));
   r->ant_cur = -1;
   r->type = -1;
-  r->nb_links = -1;
+  r->nb_link = -1;
   r->flag = -1;
   r->name = NULL;
-  r->links = NULL;
+  r->link = NULL;
   r->data = NULL;
   return (r);
 }

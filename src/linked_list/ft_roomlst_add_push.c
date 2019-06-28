@@ -26,6 +26,20 @@ void ft_roomlst_add(t_roomlst **lst, t_roomlst *elem)
   }
 }
 
+void ft_roomlst_add_second(t_roomlst **lst, t_roomlst *elem)
+{
+  if (lst)
+  {
+    if (*lst == NULL)
+      *lst = elem;
+    else
+    {
+      elem->next = (*lst)->next;
+      (*lst)->next = elem;
+    }
+  }
+}
+
 void ft_roomlst_push(t_roomlst **lst, t_roomlst *elem)
 {
   t_roomlst *tmp;
