@@ -16,14 +16,16 @@ t_global *ft_global_init()
 {
   t_global *global;
 
-  global = (t_global*)malloc(sizeof(t_global));
+  if (!(global = (t_global*)malloc(sizeof(t_global))))
+    exit(0);
   global->start = NULL;
   global->end = NULL;
   global->nb_ant = 0;
   global->nb_room = 0;
   global->path = NULL;
   global->working_path = NULL;
-  global->rooms = (t_roomlst**)malloc(sizeof(t_roomlst*));
+  if (!(global->rooms = (t_roomlst**)malloc(sizeof(t_roomlst*))))
+    exit(0);
   *(global->rooms) = NULL;
   return (global);
 }

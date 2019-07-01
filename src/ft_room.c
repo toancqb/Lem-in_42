@@ -16,7 +16,8 @@ t_room *ft_room_init()
 {
   t_room *r;
 
-  r = (t_room*)malloc(sizeof(t_room));
+  if (!(r = (t_room*)malloc(sizeof(t_room))))
+    exit(0);
   r->ant_cur = -1;
   r->type = -1;
   r->nb_link = -1;

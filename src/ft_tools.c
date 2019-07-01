@@ -8,7 +8,8 @@ char *ft_get_name(char *line)
   i = 0;
   while (line[i] != '\0' && line[i] != ' ')
     i++;
-  name = (char*)malloc(sizeof(char) * (i + 1));
+  if (!(name = (char*)malloc(sizeof(char) * (i + 1))))
+    exit(0);
   name[i] = '\0';
   i = 0;
   while (line[i] != '\0' && line[i] != ' ')
@@ -27,7 +28,8 @@ char *ft_get_first_tier(char *line)
   i = 0;
   while (line[i] != '\0' && line[i] != '-')
     i++;
-  s = (char*)malloc(sizeof(char) * (i + 1));
+  if (!(s = (char*)malloc(sizeof(char) * (i + 1))))
+    exit(0);
   s[i] = '\0';
   i = 0;
   while (line[i] != '\0' && line[i] != '-')
@@ -51,7 +53,8 @@ char *ft_get_second_tier(char *line)
   len = i;
   while (line[i] != '\0')
     i++;
-  s = (char*)malloc(sizeof(char) * (i - len + 1));
+  if (!(s = (char*)malloc(sizeof(char) * (i - len + 1))))
+    exit(0);
   s[i - len] = '\0';
   i = 0;
   while (line[len] != '\0')

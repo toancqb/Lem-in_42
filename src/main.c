@@ -91,9 +91,6 @@ void test_input_parse(int argc, char **argv)
 		ft_putstr("\n");
 		tmp = tmp->next;
 	}
-
-
-
 }
 
 int main(int argc, char *argv[])

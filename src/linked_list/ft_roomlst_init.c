@@ -16,7 +16,8 @@ t_roomlst *ft_roomlst_init(t_room *room)
 {
   t_roomlst *r;
 
-  r = (t_roomlst*)malloc(sizeof(t_roomlst));
+  if (!(r = (t_roomlst*)malloc(sizeof(t_roomlst))))
+    exit(0);
   r->r = room;
   r->next = NULL;
   return (r);
