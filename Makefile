@@ -6,7 +6,7 @@
 #    By: gly <marvin@42.fr>                         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/02 09:45:18 by gly               #+#    #+#              #
-#    Updated: 2019/07/02 14:12:08 by gly              ###   ########.fr        #
+#    Updated: 2019/07/02 14:25:07 by gly              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRC_SOLUTION = \
 	ft_calculate_step.c \
 	ft_explore_backward.c \
 	ft_find_path.c \
+	ft_find_solution.c \
 	ft_get_path.c \
 	ft_solution_manipulators.c \
 	ft_pathlst_manipulators.c
@@ -70,7 +71,8 @@ SRC_MISC = \
 all : $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT_FLAG) -o $@ src/test/test_main.c
+	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT_FLAG) -o $@ src/test/test_main.c \
+		src/test/print_solution.c
 
 $(LIBFT) :
 	make -C libft

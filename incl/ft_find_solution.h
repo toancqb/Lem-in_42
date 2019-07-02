@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 15:53:19 by gly               #+#    #+#             */
-/*   Updated: 2019/07/02 11:22:46 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/02 14:30:08 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int					ft_calculate_step(int n_path, t_solution *solution);
 
 void			ft_add_room_to_path(t_global *glob,
 		t_room *from, t_room *to);
-
+void	ft_adapt_glob_to_new_solution(t_global *glob);
 t_pathlst			*ft_pathlst_new(t_roomlst *path, int n_step);
 int					ft_pathlst_add(t_pathlst **pathlst, t_pathlst *elem);
 

@@ -7,6 +7,7 @@ void	print_solution(t_global *glob)
 	t_pathlst	*pathlst;
 	t_roomlst	*path;
 	int			i;
+	int			j;
 
 	solution = glob->solution;
 	pathlst = solution->pathlst;
@@ -24,6 +25,6 @@ void	print_solution(t_global *glob)
 			j++;
 		}
 		i++;
-		pathlst = pathls->next;
+		pathlst = pathlst->next;
 	}
 }	

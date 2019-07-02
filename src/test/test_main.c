@@ -6,11 +6,12 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 11:25:04 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/02 14:10:36 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/02 14:54:33 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib_lem_in.h"
+#include "ft_find_solution.h"
 #include "libft.h"
 #include <stdio.h>
 
@@ -56,8 +57,22 @@ void test_input_parse(int argc, char **argv)
 	}*/
 }
 
+int	test_find_solution(void)
+{
+	t_global *g;
+
+	g = ft_global_init();
+	ft_input_parsing(g);
+	printf("START %s \n", g->start->name);
+	//ft_find_global_solution(g);
+	//print_solution(g);
+	return (1);
+}
+
 int main(int argc, char *argv[])
 {
 	test_input_parse(argc, argv);
+
+	test_find_solution();
 	return (0);
 }

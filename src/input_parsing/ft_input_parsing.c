@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 13:10:47 by qtran             #+#    #+#             */
-/*   Updated: 2019/06/25 13:10:48 by qtran            ###   ########.fr       */
+/*   Updated: 2019/07/02 14:49:12 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void ft_parse_room(t_global *global)
   i = 0;
   while (i < len)
   {
-    global->rooms[i] = (t_room*)malloc(sizeof(t_room));
+//    global->rooms[i] = (t_room*)malloc(sizeof(t_room));
     tmp = ft_roomlst_shift(global->r_tmp);
     global->rooms[i] = tmp->r;
     tmp->r = NULL;

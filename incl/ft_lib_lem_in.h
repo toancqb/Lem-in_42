@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 11:24:47 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/02 11:57:14 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/02 14:26:11 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct		s_global
 	t_room			**rooms;
   t_roomlst **r_tmp;
 	t_solution		*solution;
+	int				n_path;
 }					t_global;
 
 t_room *ft_room_init();
@@ -97,5 +98,7 @@ void ft_parse_room_tmp(char *line, t_global *global, int *type, int *index);
 void ft_parse_room(t_global *global);
 int ft_input_parsing(t_global *global);
 void ft_parse_link(char *line, t_global *global);
+
+void	print_solution(t_global *glob);
 
 #endif
