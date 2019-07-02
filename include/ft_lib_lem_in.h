@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 11:24:47 by qtran             #+#    #+#             */
-/*   Updated: 2019/06/25 11:24:48 by qtran            ###   ########.fr       */
+/*   Updated: 2019/06/28 12:31:24 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct		s_room
 typedef struct s_roomlst
 {
   t_room *r;
+  int		rank;
   struct s_roomlst *next;
 } t_roomlst;
 

@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 14:13:40 by qtran             #+#    #+#             */
-/*   Updated: 2019/06/25 14:13:41 by qtran            ###   ########.fr       */
+/*   Updated: 2019/07/02 09:18:09 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,37 @@ void ft_roomlst_add(t_roomlst **lst, t_roomlst *elem)
       *lst = elem;
     }
   }
+}
+
+void ft_roomlst_add_rank(t_roomlst **lst, t_roomlst *elem)
+{
+	int		rank;
+	t_roomlst	*current;
+
+	if (lst == NULL)
+		return ;
+	if (*lst == NULL)
+		*lst = elem;
+	else
+	{
+		if ((*lst)->rank <= elem->rank)
+			ft_roomlst_add(lst, elem);
+		else
+		{
+			current = *lst;
+			while (current->next != NULL)
+			{
+				if (current->next->rank <= elem->rank)
+				{
+					elem->next = current->next;
+					current->next = elem;
+					return ;
+				}
+				current = current->next;
+			}
+			current->next = elem;
+		}
+	}
 }
 
 void ft_roomlst_add_second(t_roomlst **lst, t_roomlst *elem)
