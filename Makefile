@@ -6,7 +6,7 @@
 #    By: gly <marvin@42.fr>                         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/02 09:45:18 by gly               #+#    #+#              #
-#    Updated: 2019/07/02 10:45:43 by gly              ###   ########.fr        #
+#    Updated: 2019/07/02 14:12:08 by gly              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,13 +44,14 @@ SRC_SOLUTION = \
 	ft_explore_backward.c \
 	ft_find_path.c \
 	ft_get_path.c \
-	ft_solution_manipulators.c
+	ft_solution_manipulators.c \
+	ft_pathlst_manipulators.c
 
 SRC_INPUT_PATH = input_parsing/
 SRC_INPUT = \
 	ft_detect.c \
 	ft_input.c \
-	ft_input_parsingc \
+	ft_input_parsing.c \
 	ft_tools.c
 
 SRC_ROOMLST_PATH = roomlst/
@@ -65,12 +66,11 @@ SRC_ROOMLST = \
 SRC_MISC_PATH = misc/
 SRC_MISC = \
 	ft_room.c \
-	main.c
 
 all : $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT_FLAG) -o $@
+	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT_FLAG) -o $@ src/test/test_main.c
 
 $(LIBFT) :
 	make -C libft

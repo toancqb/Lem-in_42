@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 11:25:04 by qtran             #+#    #+#             */
-/*   Updated: 2019/06/25 12:00:11 by qtran            ###   ########.fr       */
+/*   Updated: 2019/07/02 14:10:36 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@
 void test_input_parse(int argc, char **argv)
 {
 	t_global *g;
-	t_roomlst *tmp;
+//	t_roomlst *tmp;
 	int i;
 
+	(void)argc;
+	(void)argv;
 	g = ft_global_init();
 	ft_input_parsing(g);
 

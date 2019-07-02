@@ -71,7 +71,6 @@ char *ft_get_second_tier(char *line)
 t_room *ft_get_room_by_line(t_global *global, char *line, int flag)
 {
   t_roomlst *tmp;
-  int i;
   char *s;
 
   s = (flag == 0) ? ft_get_first_tier(line) : ft_get_second_tier(line);

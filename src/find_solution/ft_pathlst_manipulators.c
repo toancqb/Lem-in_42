@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 09:41:51 by gly               #+#    #+#             */
-/*   Updated: 2019/06/27 17:37:12 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/02 14:12:40 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 t_pathlst	*ft_pathlst_new(t_roomlst *path, int n_step)
 {
-	t_pathlst	new;
+	t_pathlst	*new;
 
 	if (!(new = malloc(sizeof(t_pathlst))))
 		return (NULL);

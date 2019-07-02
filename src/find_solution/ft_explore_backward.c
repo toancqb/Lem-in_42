@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 11:33:55 by gly               #+#    #+#             */
-/*   Updated: 2019/07/02 11:20:20 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/02 14:04:23 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int					ft_explore_backward(t_global *glob,
 	if (glob->r_status[from->i] & VISITED || from == glob->start)
 		return (0);
 	ft_add_inverse_flow(glob, room, from);
-	next_room = from->link;
+	next_room = *from->link;
 	while (next_room != NULL)
 	{
 		if (!(glob->r_status[next_room->r->i] & ACTIVE) &&

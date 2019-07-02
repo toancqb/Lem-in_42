@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 14:13:40 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/02 09:18:09 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/02 14:06:50 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void ft_roomlst_add(t_roomlst **lst, t_roomlst *elem)
 
 void ft_roomlst_add_rank(t_roomlst **lst, t_roomlst *elem)
 {
-	int		rank;
 	t_roomlst	*current;
 
 	if (lst == NULL)
