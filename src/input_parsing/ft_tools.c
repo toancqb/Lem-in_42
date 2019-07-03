@@ -78,7 +78,10 @@ t_room *ft_get_room_by_line(t_global *global, char *line, int flag)
   while (tmp != NULL)
   {
     if (!ft_strcmp(tmp->r->name, s))
+    //{
       return (tmp->r);
+    //  free(s)
+    //}
     tmp = tmp->next;
   }
   free(s);

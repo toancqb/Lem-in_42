@@ -26,6 +26,7 @@ t_room *ft_room_init()
   r->flag = -1;
   r->name = NULL;
   r->link = (t_roomlst**)malloc(sizeof(t_roomlst*));
+  //malloc pas protege.
   *(r->link) = NULL;
   r->data = NULL;
   return (r);

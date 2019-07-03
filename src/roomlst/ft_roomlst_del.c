@@ -24,6 +24,7 @@ void ft_roomlst_delall(t_roomlst **lst)
       tmp = *lst;
       *lst = (*lst)->next;
       ft_room_free(&(tmp->r));
+      //on ne veut pas free les rooms ici. On veut juste free la roomlst.
       tmp->next = NULL;
       free(tmp);
     }

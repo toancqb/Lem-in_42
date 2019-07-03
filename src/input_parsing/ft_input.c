@@ -41,7 +41,6 @@ int ft_input_parsing(t_global *global)
   int type;
   int index;
 
-
   type = -1;
   index = 0;
   while ((size = get_next_line(STDIN_DEFAULT, &line)) > 0)
@@ -52,6 +51,7 @@ int ft_input_parsing(t_global *global)
     {
       if (is_nb_ant(line))
         ft_parse_nb_ant(line, global);
+      //la je mettrais des else if pour gagner du temps
       if (is_command(line))
         ft_parse_command(line, &type);
       if (is_room(line))

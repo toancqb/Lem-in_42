@@ -22,10 +22,13 @@ void ft_parse_nb_ant(char *line, t_global *global)
 void ft_parse_command(char *line, int *type)
 {
   if (ft_strstr((const char*)line, "start") != NULL)
+  //if (ft_strcmp((const char *)line, "##start") == NULL)
     *type = 1;
   else if (ft_strstr((const char*)line, "end") != NULL)
+  //else if (ft_strcmp((const char *)line, "##end") == NULL)
     *type = 0;
 }
+
 void ft_parse_room_tmp(char *line, t_global *global, int *type, int *index)
 {
   t_room *r;
@@ -49,16 +52,20 @@ void ft_parse_room_tmp(char *line, t_global *global, int *type, int *index)
 }
 
 void ft_parse_link(char *line, t_global *global)
+//int ft_parse_link(char *line, t_global *global)
 {
   t_room *r1;
   t_room *r2;
 
   r1 = ft_get_room_by_line(global, line, 0);
   r2 = ft_get_room_by_line(global, line, 1);
+  //if (r1 == NULL || r2 == NULL)
+  // return (-1);
   (r1->nb_link)++;
   ft_roomlst_add(r1->link, ft_roomlst_init(r2));
   (r2->nb_link)++;
   ft_roomlst_add(r2->link, ft_roomlst_init(r1));
+  //return (0);
 }
 
 void ft_parse_room(t_global *global)
@@ -74,7 +81,6 @@ void ft_parse_room(t_global *global)
   i = 0;
   while (i < len)
   {
-    global->rooms[i] = (t_room*)malloc(sizeof(t_room));
     tmp = ft_roomlst_shift(global->r_tmp);
     global->rooms[i] = tmp->r;
     tmp->r = NULL;

@@ -19,6 +19,7 @@ int is_command(char *line)
     return (-1);
   if (ft_strstr((const char*)line, "##") != NULL
     && line[0] != '\0' && line[0] == '#' && line[1] == '#')
+  //if (line[0] == '#' && line[1] == '#')
     return (1);
   return (0);
 }
@@ -28,6 +29,7 @@ int is_comment(char *line)
   if (line == NULL)
     return (-1);
   if (!is_command(line) && line[0] != '\0' && line[0] == '#')
+  //if (line[0] == '#' && line[1] != '#')
     return (1);
   return (0);
 }
@@ -64,6 +66,7 @@ int is_room(char *line)
     if (line[i] == ' ')
       count++;
     else if (line[i] < '0' || line[i] > '9')
+    //est ce qu'il faut pas verifier que les coordonnes sont bien des entiers ?
       return (0);
     i++;
   }
