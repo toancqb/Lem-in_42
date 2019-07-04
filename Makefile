@@ -6,7 +6,7 @@
 #    By: gly <marvin@42.fr>                         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/02 09:45:18 by gly               #+#    #+#              #
-#    Updated: 2019/07/02 14:25:07 by gly              ###   ########.fr        #
+#    Updated: 2019/07/04 09:36:47 by gly              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ all : $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJ)
 	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT_FLAG) -o $@ src/test/test_main.c \
-		src/test/print_solution.c
+		src/test/print_solution.c src/test/print_working_path.c
 
 $(LIBFT) :
 	make -C libft
@@ -90,5 +90,5 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re $(NAME)
 

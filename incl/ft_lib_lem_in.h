@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 11:24:47 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/02 14:26:11 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/04 11:06:55 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,9 @@ int ft_input_parsing(t_global *global);
 void ft_parse_link(char *line, t_global *global);
 
 void	print_solution(t_global *glob);
+void	print_working_path(t_global *glob);
+void	print_rooms(t_global *glob);
+void	print_pathlst(t_pathlst *pathlst);
+void	print_rstatus(t_global *glob);
 
 #endif

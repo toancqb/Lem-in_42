@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 12:41:42 by gly               #+#    #+#             */
-/*   Updated: 2019/07/02 14:04:47 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/04 11:31:59 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ int					ft_find_path(t_global *glob)
 		if ((ret = ft_explore_next_room(glob,
 						*room_lst->r->link, &room_lst)) != 1)
 		{
-			ft_roomlst_delall(&room_lst);
+	//		ft_roomlst_delall(&room_lst);
 			return (ret);
 		}
 		free(ft_roomlst_shift(&room_lst));
 	}
-	return (0);
+	return (1);
 }

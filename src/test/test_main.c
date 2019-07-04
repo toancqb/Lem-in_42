@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 11:25:04 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/02 14:54:33 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/04 10:03:53 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,20 @@ int	test_find_solution(void)
 
 	g = ft_global_init();
 	ft_input_parsing(g);
+	printf("Le nombre de fourmi est %d\n", g->nb_ant);
 	printf("START %s \n", g->start->name);
-	//ft_find_global_solution(g);
-	//print_solution(g);
+	printf("End is %s\n", g->end->name);
+	ft_find_global_solution(g);
+	print_solution(g);
 	return (1);
 }
 
 int main(int argc, char *argv[])
 {
-	test_input_parse(argc, argv);
+	//test_input_parse(argc, argv);
 
+	(void)argc;
+	(void)argv;
 	test_find_solution();
 	return (0);
 }

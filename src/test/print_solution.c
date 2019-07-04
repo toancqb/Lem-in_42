@@ -1,5 +1,46 @@
 #include "ft_printf.h"
-#include "ft_lib_lem_in.h"
+#include "ft_find_solution.h"
+
+void	print_rooms(t_global *glob)
+{
+	int		i;
+
+	i = 0;
+	while (i < glob->nb_room)
+	{
+		printf("Room %02d is %s.\n", i, glob->rooms[i]->name);
+		i++;
+	}
+}
+
+void	print_pathlst(t_pathlst *pathlst)
+{
+	t_roomlst *path;
+
+	while (pathlst != NULL)
+	{
+		path = pathlst->path;
+		printf("The path length is %d.\n", pathlst->n_step);
+		ft_roomlst_iter(path, &f_print_roomlst);
+		puts("");
+		pathlst = pathlst->next;
+	}
+}
+
+void	print_rstatus(t_global *glob)
+{
+	int		i;
+
+	i = 0;
+	while (i < glob->nb_room)
+	{
+		printf("%d%d%d,", glob->r_status[i] & NEGATIVE ? -1 : 0,
+				glob->r_status[i] & ACTIVE ? 1 : 0,
+				glob->r_status[i] & VISITED ? 1 : 0);
+		i++;
+	}
+	puts("");
+}
 
 void	print_solution(t_global *glob)
 {
