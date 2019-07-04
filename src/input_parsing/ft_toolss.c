@@ -32,8 +32,39 @@ int is_in_intmax(char *line, int len)
     i++;
   }
   n = (long)ft_atoi_long((const char*)str);
+  //Je ne comprends pas trop a quoi ca sert toute cette partie avec la copie de line dans str. J'avais fait un truc similaire pour push_swap. Je te mets le code en bas.
   free(str);
   if (n > 2147483647 || n < -2147483648)
     return (0);
   return (1);
 }
+
+/*
+#include <limits.h>
+static int	ft_int_array(const char *str)
+{
+	int			i;
+	long long	nb;
+	int			sign;
+
+	i = 0;
+	nb = 0;
+	sign = str[i] == '-' ? -1 : 1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if (str[i] == '\0')
+		return (0);
+	while (str[i] != '\0')
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		nb *= 10;
+		nb += str[i] - 48;
+		if (nb > INT_MAX || nb < INT_MIN)
+			return (0);
+		i++;
+	}
+	nb *= sign;
+	return (1);
+}
+*/
