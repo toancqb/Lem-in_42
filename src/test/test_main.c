@@ -45,7 +45,7 @@ void test_input_parse(int argc, char **argv)
 	}
 }
 
-int	test_find_solution(void)
+/*int	test_find_solution(void)
 {
 	t_global *g;
 
@@ -57,14 +57,13 @@ int	test_find_solution(void)
 	ft_find_global_solution(g);
 	print_solution(g);
 	return (1);
-}
+}*/
 
 int main(int argc, char *argv[])
 {
-	//test_input_parse(argc, argv);
-
 	(void)argc;
 	(void)argv;
-	test_find_solution();
+	test_input_parse(argc, argv);
+	//test_find_solution();
 	return (0);
 }

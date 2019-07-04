@@ -28,9 +28,9 @@ t_input *ft_input_init()
   return (input);
 }
 
-void ft_fin(ssize_t size, char **line, int check, t_input **input)
+void ft_fin(ssize_t size, char **line, t_input **input)
 {
-  if (check && line)
+  if ((*input)->check && line)
     free(*line);
   free(*input);
   if (size == -1)
@@ -62,6 +62,6 @@ int ft_input_parsing(t_global *global)
     free(line);
   }
   ft_parse_room(global);
-  ft_fin(size, &line, check, &input);
+  ft_fin(size, &line, &input);
   return (0);
 }

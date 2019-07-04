@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-void ft_parse_nb_ant(char *line, t_global *global, t_input *input)
+int ft_parse_nb_ant(char *line, t_global *global, t_input *input)
 {
   input->n_read += (input->n_read == -1) ? 1 : 0;
   if (input->n_read != 0)

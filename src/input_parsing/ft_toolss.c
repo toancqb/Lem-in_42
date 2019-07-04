@@ -1,5 +1,6 @@
 #include "ft_lib_lem_in.h"
 #include "libft.h"
+#include <stdlib.h>
 
 int ft_is_double_room(t_global *g, char *tmp)
 {

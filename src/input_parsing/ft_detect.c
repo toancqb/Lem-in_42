@@ -75,7 +75,6 @@ int is_room_simple(char *line)
 
 int is_room(char *line)
 {
-  int i;
   char *tmp;
 
   if (is_room_simple(line) == 0)
@@ -92,6 +91,7 @@ int is_room(char *line)
     tmp++;
   if (!is_in_intmax(line, (int)(tmp - line))) // need to implement
     return (0);
+  return (1);
 }
 
 int is_link(char *line)
