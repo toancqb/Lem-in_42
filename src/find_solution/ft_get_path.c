@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 13:35:14 by gly               #+#    #+#             */
-/*   Updated: 2019/07/04 10:41:49 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/04 13:03:53 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int					ft_get_path(t_global *glob, t_solution *solution)
 	int			n_step;
 
 	i = 0;
-	print_working_path(glob);
 	while (i < glob->nb_room)
 	{
 		path = NULL;
@@ -74,6 +73,7 @@ int					ft_get_path(t_global *glob, t_solution *solution)
 			return (-1);
 		ft_pathlst_add(&(solution->pathlst), elem);
 		i++;
+	
 	}
 	return (0);
 }
