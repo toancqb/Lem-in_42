@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 14:13:40 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/02 14:06:50 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/02 16:20:05 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void ft_roomlst_add(t_roomlst **lst, t_roomlst *elem)
 {
-  if (lst)
-  {
-    if (*lst == NULL)
-      *lst = elem;
-    else
-    {
-      elem->next = *lst;
-      *lst = elem;
-    }
-  }
+	if (lst)
+	{
+		if (*lst == NULL)
+			*lst = elem;
+		else
+		{
+			elem->next = *lst;
+			*lst = elem;
+		}
+	}
 }
 
 void ft_roomlst_add_rank(t_roomlst **lst, t_roomlst *elem)
@@ -36,54 +36,49 @@ void ft_roomlst_add_rank(t_roomlst **lst, t_roomlst *elem)
 		*lst = elem;
 	else
 	{
-		if ((*lst)->rank <= elem->rank)
-			ft_roomlst_add(lst, elem);
-		else
+		current = *lst;
+		while (current->next != NULL)
 		{
-			current = *lst;
-			while (current->next != NULL)
+			if (current->next->rank <= elem->rank)
 			{
-				if (current->next->rank <= elem->rank)
-				{
-					elem->next = current->next;
-					current->next = elem;
-					return ;
-				}
-				current = current->next;
+				elem->next = current->next;
+				current->next = elem;
+				return ;
 			}
-			current->next = elem;
+			current = current->next;
 		}
+		current->next = elem;
 	}
 }
 
 void ft_roomlst_add_second(t_roomlst **lst, t_roomlst *elem)
 {
-  if (lst)
-  {
-    if (*lst == NULL)
-      *lst = elem;
-    else
-    {
-      elem->next = (*lst)->next;
-      (*lst)->next = elem;
-    }
-  }
+	if (lst)
+	{
+		if (*lst == NULL)
+			*lst = elem;
+		else
+		{
+			elem->next = (*lst)->next;
+			(*lst)->next = elem;
+		}
+	}
 }
 
 void ft_roomlst_push(t_roomlst **lst, t_roomlst *elem)
 {
-  t_roomlst *tmp;
+	t_roomlst *tmp;
 
-  if (lst)
-  {
-    if (*lst == NULL)
-      *lst = elem;
-    else
-    {
-      tmp = *lst;
-      while (tmp->next != NULL)
-        tmp = tmp->next;
-      tmp->next = elem;
-    }
-  }
+	if (lst)
+	{
+		if (*lst == NULL)
+			*lst = elem;
+		else
+		{
+			tmp = *lst;
+			while (tmp->next != NULL)
+				tmp = tmp->next;
+			tmp->next = elem;
+		}
+	}
 }

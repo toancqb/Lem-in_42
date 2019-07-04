@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 11:33:55 by gly               #+#    #+#             */
-/*   Updated: 2019/07/02 14:04:23 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/04 11:24:07 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static inline t_room	*ft_get_from_room(t_global *glob, int j)
 	i = 0;
 	while (i < glob->nb_room)
 	{
-		if (glob->working_path[i][j] & VISITED)
+		if (glob->working_path[i][j] & ACTIVISIT)
 			return (glob->rooms[i]);
 		i++;
 	}

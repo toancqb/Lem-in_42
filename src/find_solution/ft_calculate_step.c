@@ -6,11 +6,11 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 09:29:23 by gly               #+#    #+#             */
-/*   Updated: 2019/07/02 10:47:36 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/04 11:02:49 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_lib_lem_in.h"
+#include "ft_find_solution.h"
 
 static inline int	ft_get_min_step(t_pathlst *path)
 {

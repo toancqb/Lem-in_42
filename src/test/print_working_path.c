@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_solution_manipulators.c                         :+:      :+:    :+:   */
+/*   print_working_path.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/27 16:11:30 by gly               #+#    #+#             */
-/*   Updated: 2019/07/02 15:22:06 by gly              ###   ########.fr       */
+/*   Created: 2019/07/04 09:31:58 by gly               #+#    #+#             */
+/*   Updated: 2019/07/04 09:37:41 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "ft_find_solution.h"
-#include "libft.h"
 
-t_solution	*ft_solution_new(void)
+void	print_working_path(t_global *glob)
 {
-	t_solution	*new;
+	int		i;
+	int		j;
 
-	if (!(new = malloc(sizeof(t_solution))))
-		return (NULL);
-	ft_bzero(new, sizeof(t_solution));
-	return (new);
-}
-
-void		ft_free_solution(t_solution **solution)
-{
-	t_pathlst		*tmp;
-	t_pathlst		*next;
-
-	tmp = (*solution)->pathlst;
-	while (tmp != NULL)
+	i = 0;
+	while (i < glob->nb_room)
 	{
-	//	ft_roomlst_delall(&(tmp->path));
-		next = tmp->next;
-		free(tmp);
-		tmp = next;
+		j = 0;
+		while (j < glob->nb_room)
+		{
+			printf("%d%d%d, ", glob->working_path[i][j] & NEGATIVE ? -1 : 0,
+					glob->working_path[i][j] & ACTIVE ? 1 : 0,
+					glob->working_path[i][j] & VISITED ? 1 : 0);
+			j++;
+		}
+		puts("");
+		i++;
 	}
-	free(*solution);
 }

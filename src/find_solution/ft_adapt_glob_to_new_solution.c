@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 17:42:31 by gly               #+#    #+#             */
-/*   Updated: 2019/07/02 10:37:08 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/04 11:04:11 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ void				ft_adapt_glob_to_new_solution(t_global *glob)
 		}
 		pathlst = pathlst->next;
 	}
+	print_rstatus(glob);
 }
