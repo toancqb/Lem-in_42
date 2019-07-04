@@ -41,7 +41,7 @@ int ft_parse_room_tmp(char *line, t_global *global, t_input *input)
   if (input->n_read != 1)
     return (0);
   tmp = ft_get_name(line);
-  if (!ft_is_double_room(global, tmp)) // need to implement
+  if (!ft_is_double_room(global, tmp))
     return (0);
   r = ft_room_new(tmp);
   free(tmp);

@@ -87,6 +87,8 @@ typedef struct s_input
 
 void ft_putstr_ln(char *str);
 void ft_error();
+int ft_is_double_room(t_global *g, char *tmp);
+long	ft_atoi_long(const char *str);
 t_room *ft_room_init();
 void ft_room_free(t_room **room);
 t_roomlst *ft_roomlst_init(t_room *room);
