@@ -19,7 +19,6 @@
 void test_input_parse(int argc, char **argv)
 {
 	t_global *g;
-//	t_roomlst *tmp;
 	int i;
 
 	(void)argc;
@@ -43,17 +42,6 @@ void test_input_parse(int argc, char **argv)
 		ft_roomlst_iter(*(g->rooms[i]->link), &f_print_roomlst);
 		i++;
 	}
-
-	/*ft_roomlst_iter(*(g->r_tmp), &f_print_roomlst);
-
-	tmp = *(g->r_tmp);
-	while (tmp != NULL)
-	{
-		ft_putstr("\n--["); ft_putstr(tmp->r->name); ft_putstr("]--\n");
-		ft_roomlst_iter(*(tmp->r->link), &f_print_roomlst);
-		ft_putstr("\n");
-		tmp = tmp->next;
-	}*/
 }
 
 int main(int argc, char *argv[])

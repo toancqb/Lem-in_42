@@ -2,6 +2,12 @@
 #include "libft.h"
 #include <stdlib.h>
 
+void ft_putstr_ln(char *str)
+{
+  ft_putstr(str);
+  ft_putchar('\n');
+}
+
 char *ft_get_name(char *line)
 {
   char *name;
@@ -78,20 +84,12 @@ t_room *ft_get_room_by_line(t_global *global, char *line, int flag)
   while (tmp != NULL)
   {
     if (!ft_strcmp(tmp->r->name, s))
-    //{
+    {
+      free(s);
       return (tmp->r);
-    //  free(s)
-    //}
+    }
     tmp = tmp->next;
   }
   free(s);
   return (NULL);
-}
-
-void f_print_tlist(t_list *elem)
-{
-  t_room *r;
-
-  r = (t_room*)(elem->content);
-  ft_putstr("["); ft_putstr(r->name); ft_putstr("]->");
 }

@@ -15,54 +15,53 @@
 #include <stdlib.h>
 #include "libft.h"
 
-t_global *ft_global_init()
+t_input *ft_input_init()
 {
-  t_global *global;
+  t_input *input;
 
-  if (!(global = (t_global*)malloc(sizeof(t_global))))
+  if (!(input = (t_input*)malloc(sizeof(t_input))))
     exit(0);
-  global->start = NULL;
-  global->end = NULL;
-  global->nb_ant = 0;
-  global->nb_room = 0;
-  global->working_path = NULL;
-  if (!(global->r_tmp = (t_roomlst**)malloc(sizeof(t_roomlst*))))
-    exit(0);
-  *(global->r_tmp) = NULL;
-  global->rooms = NULL;
-  global->solution = NULL;
-  return (global);
+  input->type = -1;
+  input->index = 0;
+  input->check = 0;
+  input->n_read = -1;
+  return (input);
+}
+
+void ft_fin(ssize_t size, char **line, int check, t_input **input)
+{
+  if (check && line)
+    free(*line);
+  free(*input);
+  if (size == -1)
+    perror("Error GNL: ");
 }
 
 int ft_input_parsing(t_global *global)
 {
   ssize_t size;
   char *line;
-  int type;
-  int index;
+  t_input *input;
 
-  type = -1;
-  index = 0;
+  input = ft_input_init();
   while ((size = get_next_line(STDIN_DEFAULT, &line)) > 0)
   {
-    ft_putstr(line);
-    ft_putchar('\n');
     if (!is_comment(line))
     {
-      if (is_nb_ant(line))
-        ft_parse_nb_ant(line, global);
-      //la je mettrais des else if pour gagner du temps
-      if (is_command(line))
-        ft_parse_command(line, &type);
-      if (is_room(line))
-        ft_parse_room_tmp(line, global, &type, &index);
-      if (is_link(line))
-        ft_parse_link(line, global);
+      if (is_nb_ant(line) && (!ft_parse_nb_ant(line, global, input)))
+        break ;
+      else if (is_command(line))
+        ft_parse_command(line, input);
+      else if (is_room(line) &&
+      (!(ft_parse_room_tmp(line, global, input))))
+        break ;
+      else if (is_link(line) && (!ft_parse_link(line, global, input)))
+        break ;
     }
+    ft_putstr_ln(line);
     free(line);
   }
   ft_parse_room(global);
-  if (size == -1)
-    perror("Error: ");
+  ft_fin(size, &line, check, &input);
   return (0);
 }

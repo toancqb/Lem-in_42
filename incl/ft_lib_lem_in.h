@@ -14,6 +14,7 @@
 # define FT_LIB_LEM_IN_H
 # define STDIN_DEFAULT 0
 # include <string.h>
+# include <sys/types.h> // for my debian compile
 typedef struct s_data
 {
   int level;
@@ -66,6 +67,25 @@ typedef struct		s_global
 	t_solution		*solution;
 }					t_global;
 
+typedef struct s_input
+{
+  int type;
+  int check;
+  int index;
+  int n_read;
+  /*
+   * n_read = -1 haven't read nb_ant
+   *        = 0 had read nb_ant and ready for reading rooms
+   *            (after read 1er rooms n_read = 1)
+   *        = 1 had read rooms and ready for reading links
+   *            (after read 1er link, n_read = 2)
+   *        if n_read == 2 and we met room => Stop reading
+   *        if n_read == 0 and we met link => Stop reading -> Error
+   */
+} t_input;
+
+void ft_putstr_ln(char *str);
+void ft_error();
 t_room *ft_room_init();
 void ft_room_free(t_room **room);
 t_roomlst *ft_roomlst_init(t_room *room);

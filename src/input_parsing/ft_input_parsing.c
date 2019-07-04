@@ -14,58 +14,74 @@
 #include <stdlib.h>
 #include "libft.h"
 
-void ft_parse_nb_ant(char *line, t_global *global)
+void ft_parse_nb_ant(char *line, t_global *global, t_input *input)
 {
+  input->n_read += (input->n_read == -1) ? 1 : 0;
+  if (input->n_read != 0)
+    return (0);
   global->nb_ant = ft_atoi(line);
+  return (1);
 }
 
-void ft_parse_command(char *line, int *type)
+void ft_parse_command(char *line, t_input *input)
 {
-  if (ft_strstr((const char*)line, "start") != NULL)
-  //if (ft_strcmp((const char *)line, "##start") == NULL)
-    *type = 1;
-  else if (ft_strstr((const char*)line, "end") != NULL)
-  //else if (ft_strcmp((const char *)line, "##end") == NULL)
-    *type = 0;
+  if (!ft_strcmp((const char *)line, "##start"))
+    input->type = 1;
+  else if (!ft_strcmp((const char *)line, "##end"))
+    input->type = 0;
 }
 
-void ft_parse_room_tmp(char *line, t_global *global, int *type, int *index)
+int ft_parse_room_tmp(char *line, t_global *global, t_input *input)
 {
   t_room *r;
   t_roomlst *rlst;
   char *tmp;
 
+  input->n_read += (input->n_read == 0) ? 1 : 0;
+  if (input->n_read != 1)
+    return (0);
   tmp = ft_get_name(line);
+  if (!ft_is_double_room(global, tmp)) // need to implement
+    return (0);
   r = ft_room_new(tmp);
   free(tmp);
-  r->i = (*index)++;
+  r->i = (input->index)++;
   (global->nb_room)++;
   r->ant_cur = -1;
-  r->type = *type; // type = 0 -> end || = 1 -> start || = -1 -> mid
-  if (*type == 0)
+  r->type = input->type; // type = 0 -> end || = 1 -> start || = -1 -> mid
+  if (input->type == 0)
     global->end = r;
-  else if (*type == 1)
+  else if (input->type == 1)
     global->start = r;
-  *type = -1;
+  input->type = -1;
   rlst = ft_roomlst_init(r);
   ft_roomlst_push(global->r_tmp, rlst);
+  return (1);
 }
 
-void ft_parse_link(char *line, t_global *global)
-//int ft_parse_link(char *line, t_global *global)
+int ft_parse_link(char *line, t_global *global, t_input *input)
 {
   t_room *r1;
   t_room *r2;
 
+  input->n_read += (input->n_read == 1) ? 1 : 0;
+  if (input->n_read != 2)
+  {
+    input->check = 1;
+    return (0);
+  }
   r1 = ft_get_room_by_line(global, line, 0);
   r2 = ft_get_room_by_line(global, line, 1);
-  //if (r1 == NULL || r2 == NULL)
-  // return (-1);
+  if (r1 == NULL || r2 == NULL)
+  {
+    input->check = 1;
+    return (0);
+  }
   (r1->nb_link)++;
   ft_roomlst_add(r1->link, ft_roomlst_init(r2));
   (r2->nb_link)++;
   ft_roomlst_add(r2->link, ft_roomlst_init(r1));
-  //return (0);
+  return (1);
 }
 
 void ft_parse_room(t_global *global)
