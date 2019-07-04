@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 13:10:47 by qtran             #+#    #+#             */
-/*   Updated: 2019/06/25 13:10:48 by qtran            ###   ########.fr       */
+/*   Updated: 2019/07/04 11:50:43 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,33 @@
 
 t_global *ft_global_init()
 {
-  t_global *global;
+	t_global *global;
 
-  if (!(global = (t_global*)malloc(sizeof(t_global))))
-    exit(0);
-  global->start = NULL;
-  global->end = NULL;
-  global->nb_ant = 0;
-  global->nb_room = 0;
-  global->working_path = NULL;
-  if (!(global->r_tmp = (t_roomlst**)malloc(sizeof(t_roomlst*))))
-    exit(0);
-  *(global->r_tmp) = NULL;
-  global->rooms = NULL;
-  global->solution = NULL;
-  return (global);
+	if (!(global = (t_global*)malloc(sizeof(t_global))))
+		exit(0);
+	global->start = NULL;
+	global->end = NULL;
+	global->nb_ant = 0;
+	global->nb_room = 0;
+	global->working_path = NULL;
+	if (!(global->r_tmp = (t_roomlst**)malloc(sizeof(t_roomlst*))))
+		exit(0);
+	*(global->r_tmp) = NULL;
+	global->rooms = NULL;
+	global->solution = NULL;
+	global->n_path = 0;
+	global->r_status = NULL;
+
+
+	return (global);
 }
 
 int ft_input_parsing(t_global *global)
 {
-  ssize_t size;
-  char *line;
-  int type;
-  int index;
+	ssize_t size;
+	char *line;
+	int type;
+	int index;
 
   type = -1;
   index = 0;
