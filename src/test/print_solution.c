@@ -57,6 +57,7 @@ void	print_solution(t_global *glob)
 	while (pathlst != NULL)
 	{
 		ft_printf("Path %d:\n", i);
+		ft_printf("The number of ant in the path is %d.\n", pathlst->nb_ant);
 		path = pathlst->path;
 		j = 0;
 		while (path != NULL)
