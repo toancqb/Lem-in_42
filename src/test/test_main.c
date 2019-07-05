@@ -14,8 +14,7 @@
 #include "ft_find_solution.h"
 #include "libft.h"
 #include <stdio.h>
-
-//gcc main.c ft_room.c ft_input*.c ft_detect.c ft_tools.c linked_list/*.c ../libft/libft.a
+#include <stdlib.h>
 
 void test_input_parse(int argc, char **argv)
 {
@@ -26,8 +25,6 @@ void test_input_parse(int argc, char **argv)
 	(void)argv;
 	g = ft_global_init();
 	ft_input_parsing(g);
-
-	//test input parsing
 
 	i = 0;
 	while(i < g->nb_room)
@@ -43,6 +40,8 @@ void test_input_parse(int argc, char **argv)
 		ft_roomlst_iter(*(g->rooms[i]->link), &f_print_roomlst);
 		i++;
 	}
+	printf("\n");
+	ft_global_free(&g);
 }
 
 /*int	test_find_solution(void)
@@ -59,10 +58,24 @@ void test_input_parse(int argc, char **argv)
 	return (1);
 }*/
 
+void test_linhtinh()
+{
+	int *p;
+
+	p = (int*)malloc(sizeof(int));
+	*p = 10;
+	free(p);
+	p = NULL;
+	printf("--%d--\n", (p == NULL));
+}
+
 int main(int argc, char *argv[])
 {
 	(void)argc;
 	(void)argv;
+
+	//test_linhtinh();
+
 	test_input_parse(argc, argv);
 	//test_find_solution();
 	return (0);

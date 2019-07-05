@@ -46,12 +46,12 @@ int is_nb_ant(char *line)
       return (0);
     i++;
   }
-  if (!is_in_intmax(line, ft_strlen(line))) // need to implement
+  if (!is_in_intmax(line))
     ft_error();
   return (1);
 }
 
-int is_room_simple(char *line)
+int is_room(char *line)
 {
   int i;
   int count;
@@ -68,30 +68,11 @@ int is_room_simple(char *line)
   {
     if (line[i] == ' ')
       count++;
+    else if (line[i] < '0' || line[i] > '9')
+      return (0);
     i++;
   }
   return ((count == 2)? 1 : 0);
-}
-
-int is_room(char *line)
-{
-  char *tmp;
-
-  if (is_room_simple(line) == 0)
-    return (0);
-  while (*line != '\0' && *line != ' ')
-    line++;
-  tmp = ++line;
-  while (*tmp != '\0' && *tmp != ' ')
-    tmp++;
-  if (!is_in_intmax(line, (int)(tmp - line))) // need to implement
-    return (0);
-  line = ++tmp;
-  while (*tmp != '\0')
-    tmp++;
-  if (!is_in_intmax(line, (int)(tmp - line))) // need to implement
-    return (0);
-  return (1);
 }
 
 int is_link(char *line)

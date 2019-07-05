@@ -48,13 +48,14 @@ int ft_input_parsing(t_global *global)
   {
     if (!is_comment(line))
     {
-      if (is_nb_ant(line) && (!ft_parse_nb_ant(line, global, input)))
+      if (!ft_check_format_line(line, input))
+        break ;
+      else if (is_nb_ant(line) && (!ft_parse_nb_ant(line, global, input)))
         break ;
       else if (is_command(line))
         ft_parse_command(line, input);
-      else if (is_room(line) &&
-      (!(ft_parse_room_tmp(line, global, input))))
-      // les && doivent etre en debut de ligne selon la norme.
+      else if (is_room(line)
+      && (!(ft_parse_room_tmp(line, global, input))))
         break ;
       else if (is_link(line) && (!ft_parse_link(line, global, input)))
         break ;

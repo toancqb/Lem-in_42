@@ -16,32 +16,7 @@ int ft_is_double_room(t_global *g, char *tmp)
   return (1);
 }
 
-int is_in_intmax(char *line, int len)
-{
-  long n;
-  char *str;
-  int i;
-
-  if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
-    exit(0);
-  str[len] = '\0';
-  i = 0;
-  while (i < len)
-  {
-    str[i] = line[i];
-    i++;
-  }
-  n = (long)ft_atoi_long((const char*)str);
-  //Je ne comprends pas trop a quoi ca sert toute cette partie avec la copie de line dans str. J'avais fait un truc similaire pour push_swap. Je te mets le code en bas.
-  free(str);
-  if (n > 2147483647 || n < -2147483648)
-    return (0);
-  return (1);
-}
-
-/*
-#include <limits.h>
-static int	ft_int_array(const char *str)
+int	is_in_intmax(const char *str)
 {
 	int			i;
 	long long	nb;
@@ -67,4 +42,14 @@ static int	ft_int_array(const char *str)
 	nb *= sign;
 	return (1);
 }
-*/
+
+int ft_check_format_line(char *line, t_input *input)
+{
+  if (!(line[0] == ' ' || line[ft_strlen(line) - 1] == ' '))
+    return (1);
+  else
+  {
+    input->check = 1;
+    return (0);
+  }
+}
