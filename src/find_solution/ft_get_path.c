@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 13:35:14 by gly               #+#    #+#             */
-/*   Updated: 2019/07/04 16:49:44 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/05 10:31:56 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,11 @@ static inline int	ft_get_single_path2(t_global *glob, int j, t_roomlst **path)
 
 	n_step = 1;
 	i = 0;
-	puts("In here");
 	while (i < glob->nb_room)
 	{
 		if (glob->working_path[i][j] & ACTIVISIT
 				&& !(glob->working_path[i][j] & NEGATIVE))
 		{
-			printf("Found a path between %s and %s.\n", glob->rooms[i]->name, glob->rooms[j]->name);
 			n_step++;
 			if (!(room = ft_roomlst_new(glob->rooms[i], 0)))
 				return (-1);
@@ -77,7 +75,6 @@ static inline int	ft_get_newest_path(t_global *glob, t_roomlst **path)
 		if (glob->working_path[i][glob->end->i] & ACTIVISIT
 				&& !(glob->r_status[i] & ACTIVE))
 		{
-			printf("The new path is starting in room %s at index %d.\n", glob->rooms[i]->name, i);
 			if (!(room = ft_roomlst_new(glob->rooms[i], 0)))
 				return (-1);
 			ft_roomlst_add(path, room);
