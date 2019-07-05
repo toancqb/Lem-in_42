@@ -41,9 +41,8 @@ void test_input_parse(int argc, char **argv)
 		i++;
 	}
 	printf("\n");
-	if (g->solution != NULL)
-		ft_free_solution(&(g->solution));
-	//ft_global_free(&g);
+
+	ft_global_free(&g);
 }
 
 /*int	test_find_solution(void)

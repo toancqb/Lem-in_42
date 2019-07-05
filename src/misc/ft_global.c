@@ -53,19 +53,19 @@ void ft_global_free(t_global **global)
   g = *global;
   if (g->r_status)
     free(g->r_status);
-  if (g->working_path)
+  /*if (*(g->working_path) != NULL)
     while (g->working_path[i] != NULL)
     {
       free(g->working_path[i]);
       i++;
     }
   i = 0;
-  if (g->rooms)
+  if (*(g->rooms) != NULL)
     while (g->rooms[i] != NULL)
     {
       ft_room_free(&(g->rooms[i]));
       i++;
-    }
+    }*/
   if (g->solution != NULL)
   	ft_free_solution(&(g->solution));
   free(g);
