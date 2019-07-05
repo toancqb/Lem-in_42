@@ -39,18 +39,3 @@ t_room *ft_room_new(char *name)
 	r->name = ft_strdup(name);
 	return (r);
 }
-
-void ft_room_free(t_room **room)
-{
-  t_room *r;
-
-  if (room)
-  {
-    r = *room;
-    if (r->name)
-      free(r->name);
-    free(r->link);
-    r->link = NULL;
-    free(*room);
-  }
-}

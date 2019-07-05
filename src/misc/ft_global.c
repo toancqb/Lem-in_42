@@ -21,35 +21,52 @@ t_global *ft_global_init()
   return (global);
 }
 
+void ft_room_free(t_room **room)
+{
+  t_room *r;
+  t_roomlst *i;
+  t_roomlst *tmp;
+
+  if (room)
+  {
+    r = *room;
+    if (r->name)
+      free(r->name);
+    i = *(r->link);
+    while (i != NULL)
+    {
+      tmp = i;
+      i = i->next;
+      free(tmp);
+    }
+    free(r->link);
+    free(*room);
+  }
+}
+
 void ft_global_free(t_global **global)
 {
   int i;
   t_global *g;
 
-  if (global && *global)
-  {
-    i = 0;
-    g = *global;
-    if (g->rooms)
-      while (g->rooms[i] != NULL)
-      {
-        if (g->rooms[i])
-          ft_room_free(&(g->rooms[i]));
-        i++;
-      }
-    free(g->rooms);
-    if (g->r_status)
-      free(g->r_status);
-    i = 0;
-    if (g->working_path)
-      while (g->working_path[i] != NULL)
-      {
-        if (g->working_path[i])
-          free(g->working_path[i]);
-        i++;
-      }
-    free(g->working_path);
-    ft_free_solution(&(g->solution));
-    free(g);
-  }
+  i = 0;
+  g = *global;
+  if (g->r_status)
+    free(g->r_status);
+  if (g->working_path)
+    while (g->working_path[i] != NULL)
+    {
+      free(g->working_path[i]);
+      i++;
+    }
+  i = 0;
+  if (g->rooms)
+    while (g->rooms[i] != NULL)
+    {
+      ft_room_free(&(g->rooms[i]));
+      i++;
+    }
+  if (g->solution != NULL)
+  	ft_free_solution(&(g->solution));
+  free(g);
 }
