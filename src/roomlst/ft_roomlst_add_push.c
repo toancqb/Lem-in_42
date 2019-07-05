@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 14:13:40 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/02 16:20:05 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/04 13:13:59 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void ft_roomlst_add_rank(t_roomlst **lst, t_roomlst *elem)
 		current = *lst;
 		while (current->next != NULL)
 		{
-			if (current->next->rank <= elem->rank)
+			if (elem->rank != 0 && current->next->rank <= elem->rank)
 			{
 				elem->next = current->next;
 				current->next = elem;
