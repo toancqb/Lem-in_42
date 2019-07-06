@@ -10,7 +10,7 @@ t_global *ft_global_init()
     exit(0);
   global->start = NULL;
   global->end = NULL;
-  global->nb_ant = 0;
+  global->nb_ant = -1;
   global->nb_room = 0;
   global->working_path = NULL;
   if (!(global->r_tmp = (t_roomlst**)malloc(sizeof(t_roomlst*))))
@@ -32,13 +32,13 @@ void ft_room_free(t_room **room)
     r = *room;
     if (r->name)
       free(r->name);
-    i = *(r->link);
+    /*i = *(r->link);
     while (i != NULL)
     {
       tmp = i;
       i = i->next;
       free(tmp);
-    }
+    }*/
     free(r->link);
     free(*room);
   }
@@ -53,20 +53,13 @@ void ft_global_free(t_global **global)
   g = *global;
   if (g->r_status)
     free(g->r_status);
-  /*if (*(g->working_path) != NULL)
-    while (g->working_path[i] != NULL)
-    {
-      free(g->working_path[i]);
-      i++;
-    }
-  i = 0;
-  if (*(g->rooms) != NULL)
-    while (g->rooms[i] != NULL)
-    {
-      ft_room_free(&(g->rooms[i]));
-      i++;
-    }*/
   if (g->solution != NULL)
   	ft_free_solution(&(g->solution));
+  while (g->rooms[i] != NULL)
+  {
+    ft_room_free(&(g->rooms[i]));
+    i++;
+  }
+
   free(g);
 }

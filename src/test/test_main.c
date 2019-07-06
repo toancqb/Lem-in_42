@@ -16,6 +16,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void f_print_full(t_roomlst *r)
+{
+	printf("[%s] -> ", r->r->name);
+}
+
+void test_full()
+{
+	t_global *g;
+	int i;
+
+	g = ft_global_init();
+	ft_input_parsing(g);
+
+	printf("\nnb_ant: %d\n", g->nb_ant);
+	printf("START %s\n", g->start->name);
+	printf("END %s\n", g->end->name);
+	i = 0;
+	while(i < g->nb_room)
+	{
+		printf("[%s] -> ", g->rooms[i]->name);
+		i++;
+	}
+	printf("\n");
+	i = 0;
+	while(g->rooms[i] != NULL)
+	{
+		printf("\n---[%s]---: ", g->rooms[i]->name);
+		ft_roomlst_iter(*(g->rooms[i]->link), &f_print_full);
+		i++;
+	}
+	printf("\n");
+	ft_global_free(&g);
+}
+
 void test_input_parse(int argc, char **argv)
 {
 	t_global *g;
@@ -75,9 +109,8 @@ int main(int argc, char *argv[])
 	(void)argc;
 	(void)argv;
 
-	//test_linhtinh();
-
-	test_input_parse(argc, argv);
+	test_full();
+	//test_input_parse(argc, argv);
 	//test_find_solution();
 	return (0);
 }

@@ -38,8 +38,10 @@ int is_nb_ant(char *line)
   i = 0;
   if (line == NULL)
     return (-1);
-  if (line[0] == '\0')
+  if (line[0] == '\0' || line[0] == '-')
     return (0);
+  if (line[0] == '+')
+    i++;
   while (line[i] != '\0')
   {
     if (line[i] < '0' || line[i] > '9')

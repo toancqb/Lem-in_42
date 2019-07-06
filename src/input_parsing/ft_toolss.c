@@ -45,7 +45,7 @@ int	is_in_intmax(const char *str)
 
 int ft_check_format_line(char *line, t_input *input)
 {
-  if (!(line[0] == ' ' || line[ft_strlen(line) - 1] == ' '))
+  if (!(line[0] == '\0'))
     return (1);
   else
   {
