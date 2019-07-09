@@ -34,7 +34,7 @@ void	print_rstatus(t_global *glob)
 	i = 0;
 	while (i < glob->nb_room)
 	{
-		printf("%d%d%d,", glob->r_status[i] & NEGATIVE ? -1 : 0,
+		printf("%d%d,",
 				glob->r_status[i] & ACTIVE ? 1 : 0,
 				glob->r_status[i] & VISITED ? 1 : 0);
 		i++;

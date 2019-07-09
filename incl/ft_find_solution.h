@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 15:53:19 by gly               #+#    #+#             */
-/*   Updated: 2019/07/02 16:26:29 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/09 12:42:33 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # define VISITED 1
 # define ACTIVE 1 << 1
 # define ACTIVISIT 3
-# define NEGATIVE 1 << 2
+# define REV_UP 1 << 2
+# define REV_DOWN 1 << 3
 #include "ft_lib_lem_in.h"
 
 
@@ -37,6 +38,7 @@ t_pathlst			*ft_pathlst_new(t_roomlst *path, int n_step);
 int					ft_pathlst_add(t_pathlst **pathlst, t_pathlst *elem);
 
 t_solution			*ft_solution_new(void);
+int					ft_get_single_path(t_global *glob, t_roomlst **path);
 void				ft_free_solution(t_solution **solution);
 
 //need to be implemented

@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 11:33:55 by gly               #+#    #+#             */
-/*   Updated: 2019/07/04 14:02:05 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/09 12:07:58 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 static inline void	ft_add_inverse_flow(t_global *glob,
 		t_room *from, t_room *to)
 {
-	glob->working_path[from->i][to->i] |= NEGATIVE;
+	glob->working_path[from->i][to->i] |= REV_DOWN;
+	glob->working_path[to->i][from->i] |= REV_UP;
 	glob->r_status[from->i] |= VISITED;
 }
 static inline t_room	*ft_get_from_room(t_global *glob, int j)

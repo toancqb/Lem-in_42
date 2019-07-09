@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 09:31:58 by gly               #+#    #+#             */
-/*   Updated: 2019/07/04 09:37:41 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/09 12:50:26 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	print_working_path(t_global *glob)
 		j = 0;
 		while (j < glob->nb_room)
 		{
-			printf("%d%d%d, ", glob->working_path[i][j] & NEGATIVE ? -1 : 0,
+			printf("%d%d%d%d, ",
+					glob->working_path[i][j] & REV_UP ? -1 : 0,
+					glob->working_path[i][j] & REV_DOWN ? -1 : 0,
 					glob->working_path[i][j] & ACTIVE ? 1 : 0,
 					glob->working_path[i][j] & VISITED ? 1 : 0);
 			j++;
