@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 15:53:19 by gly               #+#    #+#             */
-/*   Updated: 2019/07/09 12:42:33 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/09 14:32:11 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 int				ft_find_global_solution(t_global *glob);
 int				ft_find_path(t_global *glob);
 int				ft_get_path(t_global *glob, t_solution *solution);
+int				ft_get_new_path(t_global *glob, t_roomlst **path);
 int					ft_explore_backward(t_global *glob,
 		t_roomlst **room_lst, t_room *room, int rank);
 int					ft_calculate_step(t_global *glob,

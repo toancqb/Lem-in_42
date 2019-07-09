@@ -6,7 +6,7 @@
 #    By: gly <marvin@42.fr>                         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/02 09:45:18 by gly               #+#    #+#              #
-#    Updated: 2019/07/09 12:44:29 by gly              ###   ########.fr        #
+#    Updated: 2019/07/09 14:32:42 by gly              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC_SOLUTION = \
 	ft_find_solution.c \
 	ft_get_path.c \
 	ft_get_single_path.c \
+	ft_get_new_path.c \
 	ft_solution_manipulators.c \
 	ft_pathlst_manipulators.c
 
