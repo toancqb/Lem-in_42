@@ -44,8 +44,12 @@ void ft_move_current_ant(t_roomlst *ant, t_global *g)
   tmp = ant;
   while (tmp != NULL)
   {
-    if (ant->r != NULL && ft_strcmp(ant->r->name, g->end->name))
-      ant->r = ant->r->p;
+    if (tmp->r != NULL && ft_strcmp(tmp->r->name, g->end->name))
+    {
+      //printf("(%s) -> ", tmp->r->name);
+      tmp->r = tmp->r->p;
+      //printf("(%s)\n", ant->r->name);
+    }
     tmp = tmp->next;
   }
 }
@@ -100,7 +104,10 @@ void process_path(t_solution *s)
     while (path != NULL)
     {
       if (path->next)
+      {
         path->r->p = path->next->r;
+      //  printf("(%s) -> (%s)\n", path->r->name, path->r->p->name);
+      }
       path = path->next;
     }
     pathlst = pathlst->next;
@@ -120,15 +127,13 @@ void print_line(t_roomlst *ant, int *check, t_room *end)
       check[tmp->rank] = 1;
     tmp = tmp->next;
   }
-  ft_putstr("\n");
+  printf("\n");
 }
 
-int *ft_check_init(int nb_ant)
+void ft_check_init(int *check, int nb_ant)
 {
-  int *check;
   int i;
 
-  check = (int*)malloc(sizeof(nb_ant + 2));
   check[nb_ant + 1] = 3;
   i = 0;
   while (i <= nb_ant)
@@ -136,7 +141,6 @@ int *ft_check_init(int nb_ant)
     check[i] = 0;
     i++;
   }
-  return (check);
 }
 
 int print_lem_in_simple(t_global *g)
@@ -145,19 +149,21 @@ int print_lem_in_simple(t_global *g)
   int *check;
 //  int i;
 
+  if (!(check = (int*)malloc(sizeof(int) * (g->nb_ant + 2))))
+    return (0);
   ant = ft_ant_init(g->nb_ant);
-  check = ft_check_init(g->nb_ant);
+  ft_check_init(check, g->nb_ant);
   if (ant == NULL)
     return (0);
   process_path(g->solution);
-  //while (ft_nb_ant_in_end(check, g->nb_ant) < g->nb_ant)
-  //{
+  while (ft_nb_ant_in_end(check, g->nb_ant) < g->nb_ant)
+  {
     ft_move(ant, g);
     print_line(ant, check, g->end);
 
-    //ft_move(ant, g);
-    //print_line(ant, check, g->end);
-  //}
+    ft_move(ant, g);
+    print_line(ant, check, g->end);
+  }
   free(check);
   return (1);
 }
