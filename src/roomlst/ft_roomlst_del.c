@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 14:13:57 by qtran             #+#    #+#             */
-/*   Updated: 2019/06/25 14:13:58 by qtran            ###   ########.fr       */
+/*   Updated: 2019/07/09 14:08:16 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void ft_roomlst_delall(t_roomlst **lst)
     {
       tmp = *lst;
       *lst = (*lst)->next;
-      ft_room_free(&(tmp->r));
-      //on ne veut pas free les rooms ici. On veut juste free la roomlst.
       tmp->next = NULL;
       free(tmp);
     }

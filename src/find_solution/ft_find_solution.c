@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 16:11:53 by gly               #+#    #+#             */
-/*   Updated: 2019/07/05 10:43:16 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/09 14:29:20 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,12 @@ int					ft_find_global_solution(t_global *glob)
 	if (ft_r_status_init(glob) == -1 || ft_working_path_init(glob) == -1)
 		return (-1);
 	i = 0;
-	printf("start link number is %d, end link number is %d.\n", glob->start->nb_link, glob->end->nb_link);
 	while (i <= glob->start->nb_link && i <= glob->end->nb_link)
 	{
-		printf("Looking for %d distinct paths.\n", i);
 		if (!(solution = ft_solution_new()))
 			return (-1);
 		if ((ret = ft_find_solution_for_n_path(glob, solution)) != 0)
 			return (ret);
-		print_pathlst(solution->pathlst);
 		if (ft_optimize_solution(glob, solution))
 			return (0);
 		i++;

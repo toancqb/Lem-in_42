@@ -12,6 +12,7 @@ t_global *ft_global_init()
   global->end = NULL;
   global->nb_ant = -1;
   global->nb_room = 0;
+  global->n_path = 0;
   global->working_path = NULL;
   if (!(global->r_tmp = (t_roomlst**)malloc(sizeof(t_roomlst*))))
     exit(0);

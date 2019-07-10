@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 16:11:30 by gly               #+#    #+#             */
-/*   Updated: 2019/07/02 15:22:06 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/09 14:36:09 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		ft_free_solution(t_solution **solution)
 	tmp = (*solution)->pathlst;
 	while (tmp != NULL)
 	{
-	//	ft_roomlst_delall(&(tmp->path));
+		ft_roomlst_delall(&(tmp->path));
 		next = tmp->next;
 		free(tmp);
 		tmp = next;

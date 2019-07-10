@@ -6,7 +6,7 @@
 #    By: gly <marvin@42.fr>                         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/02 09:45:18 by gly               #+#    #+#              #
-#    Updated: 2019/07/04 09:36:47 by gly              ###   ########.fr        #
+#    Updated: 2019/07/09 14:32:42 by gly              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,8 @@ SRC_SOLUTION = \
 	ft_find_path.c \
 	ft_find_solution.c \
 	ft_get_path.c \
+	ft_get_single_path.c \
+	ft_get_new_path.c \
 	ft_solution_manipulators.c \
 	ft_pathlst_manipulators.c
 
@@ -53,7 +55,8 @@ SRC_INPUT = \
 	ft_detect.c \
 	ft_input.c \
 	ft_input_parsing.c \
-	ft_tools.c
+	ft_tools.c \
+	ft_toolss.c
 
 SRC_ROOMLST_PATH = roomlst/
 SRC_ROOMLST = \
@@ -66,6 +69,9 @@ SRC_ROOMLST = \
 
 SRC_MISC_PATH = misc/
 SRC_MISC = \
+	ft_atoi_long.c \
+	ft_error.c \
+	ft_global.c \
 	ft_room.c \
 
 all : $(NAME)

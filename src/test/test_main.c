@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 11:25:04 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/04 10:03:53 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/05 10:52:06 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void test_input_parse(int argc, char **argv)
 	ft_global_free(&g);
 }
 
-/*int	test_find_solution(void)
+int	test_find_solution(void)
 {
 	t_global *g;
 
@@ -91,7 +91,7 @@ void test_input_parse(int argc, char **argv)
 	ft_find_global_solution(g);
 	print_solution(g);
 	return (1);
-}*/
+}
 
 void test_linhtinh()
 {
@@ -109,8 +109,8 @@ int main(int argc, char *argv[])
 	(void)argc;
 	(void)argv;
 
-	test_full();
+	
 	//test_input_parse(argc, argv);
-	//test_find_solution();
+	test_find_solution();
 	return (0);
 }

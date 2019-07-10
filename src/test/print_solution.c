@@ -34,7 +34,7 @@ void	print_rstatus(t_global *glob)
 	i = 0;
 	while (i < glob->nb_room)
 	{
-		printf("%d%d%d,", glob->r_status[i] & NEGATIVE ? -1 : 0,
+		printf("%d%d,",
 				glob->r_status[i] & ACTIVE ? 1 : 0,
 				glob->r_status[i] & VISITED ? 1 : 0);
 		i++;
@@ -57,6 +57,7 @@ void	print_solution(t_global *glob)
 	while (pathlst != NULL)
 	{
 		ft_printf("Path %d:\n", i);
+		ft_printf("The number of ant in the path is %d.\n", pathlst->nb_ant);
 		path = pathlst->path;
 		j = 0;
 		while (path != NULL)

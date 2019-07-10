@@ -6,19 +6,21 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 11:33:55 by gly               #+#    #+#             */
-/*   Updated: 2019/07/04 14:02:05 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/09 14:20:54 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_find_solution.h"
 
-static inline void	ft_add_inverse_flow(t_global *glob,
+static inline void		ft_add_inverse_flow(t_global *glob,
 		t_room *from, t_room *to)
 {
-	glob->working_path[from->i][to->i] |= NEGATIVE;
+	glob->working_path[from->i][to->i] |= REV_DOWN;
+	glob->working_path[to->i][from->i] |= REV_UP;
 	glob->r_status[from->i] |= VISITED;
 }
+
 static inline t_room	*ft_get_from_room(t_global *glob, int j)
 {
 	int		i;
@@ -33,7 +35,7 @@ static inline t_room	*ft_get_from_room(t_global *glob, int j)
 	return (NULL);
 }
 
-int					ft_explore_backward(t_global *glob,
+int						ft_explore_backward(t_global *glob,
 		t_roomlst **room_lst, t_room *room, int rank)
 {
 	t_roomlst	*next_room;
