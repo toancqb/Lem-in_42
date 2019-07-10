@@ -27,7 +27,8 @@ typedef struct		s_room
 	int				nb_link;
 	struct s_roomlst			**link;
 	int				flag;
-	struct s_roomlst *p; // for print_lem_in
+	//struct s_roomlst *p; // for print_lem_in
+	struct s_room *p;
 }					t_room;
 
 typedef struct s_roomlst
