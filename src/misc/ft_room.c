@@ -22,13 +22,12 @@ t_room *ft_room_init()
     exit(0);
   r->ant_cur = -1;
   r->type = -1;
-  r->nb_link = -1;
+  r->nb_link = 0;
   r->flag = -1;
   r->name = NULL;
-  r->link = (t_roomlst**)malloc(sizeof(t_roomlst*));
-  //malloc pas protege.
+  if (!(r->link = (t_roomlst**)malloc(sizeof(t_roomlst*))))
+    exit(0);
   *(r->link) = NULL;
-  r->data = NULL;
   return (r);
 }
 
@@ -39,22 +38,4 @@ t_room *ft_room_new(char *name)
 	r = ft_room_init();
 	r->name = ft_strdup(name);
 	return (r);
-}
-
-void ft_room_free(t_room **room)
-{
-  t_room *r;
-
-  if (room)
-  {
-    r = *room;
-    if (r->name)
-      free(r->name);
-    //if (r->link)
-    //  ft_lstdel(r->link, &ft_lstdelone);
-    if (r->data)
-      free(r->data);
-    free(*room);
-    *room = NULL;
-  }
 }

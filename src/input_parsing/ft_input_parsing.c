@@ -18,7 +18,10 @@ int ft_parse_nb_ant(char *line, t_global *global, t_input *input)
 {
   input->n_read += (input->n_read == -1) ? 1 : 0;
   if (input->n_read != 0)
+  {
+    input->check = 1;
     return (0);
+  }
   global->nb_ant = ft_atoi(line);
   return (1);
 }
@@ -39,16 +42,22 @@ int ft_parse_room_tmp(char *line, t_global *global, t_input *input)
 
   input->n_read += (input->n_read == 0) ? 1 : 0;
   if (input->n_read != 1)
+  {
+    input->check = 1;
     return (0);
+  }
   tmp = ft_get_name(line);
   if (!ft_is_double_room(global, tmp))
+  {
+    input->check = 1;
     return (0);
+  }
   r = ft_room_new(tmp);
   free(tmp);
   r->i = (input->index)++;
   (global->nb_room)++;
   r->ant_cur = -1;
-  r->type = input->type; // type = 0 -> end || = 1 -> start || = -1 -> mid
+  r->type = input->type;
   if (input->type == 0)
     global->end = r;
   else if (input->type == 1)
