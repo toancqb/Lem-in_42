@@ -44,7 +44,7 @@ void ft_check_input(t_global *g)
 
 }
 
-int ft_input_parsing(t_global *global)
+int ft_input_parsing(t_global *global, t_option *opt)
 {
   ssize_t size;
   char *line;
@@ -67,7 +67,8 @@ int ft_input_parsing(t_global *global)
       else if (is_link(line) && (!ft_parse_link(line, global, input)))
         break ;
     }
-    ft_putstr_ln(line);
+    if (!opt->s)
+      ft_putstr_ln(line);
     free(line);
   }
   ft_parse_room(global);

@@ -72,13 +72,14 @@ SRC_MISC = \
 	ft_error.c \
 	ft_global.c \
 	ft_room.c \
+	ft_option.c
 
 all : $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT_FLAG) -o $@ src/test/test_main.c \
-		src/test/print_solution.c src/test/print_working_path.c \
-		src/test/print_lem_in.c
+	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT_FLAG) -o $@ src/main_function/main.c \
+		src/main_function/print_solution.c src/main_function/print_working_path.c \
+		src/main_function/print_lem_in.c
 
 $(LIBFT) :
 	make -C libft

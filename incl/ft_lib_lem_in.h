@@ -27,7 +27,6 @@ typedef struct		s_room
 	int				nb_link;
 	struct s_roomlst			**link;
 	int				flag;
-	//struct s_roomlst *p; // for print_lem_in
 	struct s_room *p;
 }					t_room;
 
@@ -85,6 +84,13 @@ typedef struct s_input
   int n_read;
 } t_input;
 
+typedef struct s_option
+{
+	int s;
+	int i;
+	int p;
+}	t_option;
+
 void ft_putstr_ln(char *str);
 void ft_error();
 void ft_strerror(char *str);
@@ -110,6 +116,8 @@ t_room *ft_get_room_by_line(t_global *global, char *line, int flag);
 t_roomlst	*ft_roomlst_new(t_room *room, int rank);
 void		ft_roomlst_add_rank(t_roomlst **roomlst, t_roomlst *elem);
 
+t_option *ft_opt_init(void);
+void ft_opt_input_parsing(t_option *opt, int argc, char **argv);
 t_global *ft_global_init();
 void ft_global_free(t_global **global);
 
@@ -123,7 +131,7 @@ void ft_parse_command(char *line, t_input *input);
 int ft_parse_room_tmp(char *line, t_global *global, t_input *input);
 int ft_parse_link(char *line, t_global *global, t_input *input);
 void ft_parse_room(t_global *global);
-int ft_input_parsing(t_global *global);
+int ft_input_parsing(t_global *global, t_option *opt);
 
 void	print_solution(t_global *glob);
 void	print_working_path(t_global *glob);
