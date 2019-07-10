@@ -21,16 +21,16 @@ t_roomlst *ft_ant_init(int nb_ant)
   return (NULL);
 }
 
-int ft_nb_ant_in_end(char *check)
+int ft_nb_ant_in_end(int *check, int nb_ant)
 {
   int i;
   int count;
 
   i = 1;
   count = 0;
-  while (check[i] != '\0')
+  while (i <= nb_ant)
   {
-    if (check[i] == '1')
+    if (check[i] == 1)
       count++;
     i++;
   }
@@ -80,7 +80,7 @@ int ft_move(t_roomlst *ant, t_global *g)
       next_ant = ft_next_ant(ant);
       if (next_ant == NULL)
         break ;
-      next_ant->r = plst->path->r;
+      next_ant->r = (plst->path->next)->r;
       (plst->nb_ant)--;
     }
     plst = plst->next;
@@ -107,55 +107,57 @@ void process_path(t_solution *s)
   }
 }
 
-void print_line(t_roomlst *ant, char *check, t_room *end)
+void print_line(t_roomlst *ant, int *check, t_room *end)
 {
   t_roomlst *tmp;
 
   tmp = ant;
   while (tmp != NULL)
   {
-    if (check[tmp->rank] == '0' && tmp->r != NULL)
+    if (check[tmp->rank] == 0 && tmp->r != NULL)
       printf("L%d-%s ", tmp->rank, tmp->r->name);
     if (tmp->r != NULL && !ft_strcmp(tmp->r->name, end->name))
-      check[tmp->rank] = '1';
+      check[tmp->rank] = 1;
     tmp = tmp->next;
   }
+  ft_putstr("\n");
 }
 
-char *ft_check_init(int nb_ant)
+int *ft_check_init(int nb_ant)
 {
-  char *str;
+  int *check;
   int i;
 
-  if (nb_ant <= 0)
-    return (NULL);
-  if (!(str = (char*)malloc(sizeof(char) * (nb_ant + 2))))
-    return (NULL);
-  str[nb_ant + 1] = '\0';
+  check = (int*)malloc(sizeof(nb_ant + 2));
+  check[nb_ant + 1] = 3;
   i = 0;
-  while (str[i] != '\0')
+  while (i <= nb_ant)
   {
-    str[i] = '0';
+    check[i] = 0;
     i++;
   }
-  return (str);
+  return (check);
 }
 
 int print_lem_in_simple(t_global *g)
 {
   t_roomlst *ant;
-  char *check;
+  int *check;
+//  int i;
 
   ant = ft_ant_init(g->nb_ant);
   check = ft_check_init(g->nb_ant);
   if (ant == NULL)
     return (0);
   process_path(g->solution);
-  //while (ft_nb_ant_in_end(check) < g->nb_ant)
-//  {
-  ft_move(ant, g);
+  //while (ft_nb_ant_in_end(check, g->nb_ant) < g->nb_ant)
+  //{
+    ft_move(ant, g);
     print_line(ant, check, g->end);
-//  }
+
+    //ft_move(ant, g);
+    //print_line(ant, check, g->end);
+  //}
   free(check);
   return (1);
 }
