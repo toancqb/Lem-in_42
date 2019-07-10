@@ -69,7 +69,6 @@ SRC_ROOMLST = \
 
 SRC_MISC_PATH = misc/
 SRC_MISC = \
-	ft_atoi_long.c \
 	ft_error.c \
 	ft_global.c \
 	ft_room.c \
@@ -78,7 +77,8 @@ all : $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJ)
 	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT_FLAG) -o $@ src/test/test_main.c \
-		src/test/print_solution.c src/test/print_working_path.c
+		src/test/print_solution.c src/test/print_working_path.c \
+		src/test/print_lem_in.c
 
 $(LIBFT) :
 	make -C libft
@@ -97,4 +97,3 @@ fclean : clean
 re : fclean all
 
 .PHONY : all clean fclean re $(NAME)
-

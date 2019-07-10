@@ -25,8 +25,8 @@ t_global *ft_global_init()
 void ft_room_free(t_room **room)
 {
   t_room *r;
-  t_roomlst *i;
-  t_roomlst *tmp;
+  /*t_roomlst *i;
+  t_roomlst *tmp;*/
 
   if (room)
   {

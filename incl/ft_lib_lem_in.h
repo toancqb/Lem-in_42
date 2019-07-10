@@ -27,6 +27,7 @@ typedef struct		s_room
 	int				nb_link;
 	struct s_roomlst			**link;
 	int				flag;
+	struct s_roomlst *p; // for print_lem_in
 }					t_room;
 
 typedef struct s_roomlst
@@ -128,5 +129,6 @@ void	print_working_path(t_global *glob);
 void	print_rooms(t_global *glob);
 void	print_pathlst(t_pathlst *pathlst);
 void	print_rstatus(t_global *glob);
+int print_lem_in_simple(t_global *g);
 
 #endif

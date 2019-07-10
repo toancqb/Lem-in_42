@@ -93,6 +93,22 @@ int	test_find_solution(void)
 	return (1);
 }
 
+void	test_print_result(void)
+{
+	t_global *g;
+
+	g = ft_global_init();
+	ft_input_parsing(g);
+	printf("Le nombre de fourmi est %d\n", g->nb_ant);
+	printf("START %s \n", g->start->name);
+	printf("End is %s\n", g->end->name);
+	ft_find_global_solution(g);
+
+	print_lem_in_simple(g);
+
+	//ft_global_free(&g);
+}
+
 void test_linhtinh()
 {
 	int *p;
@@ -109,8 +125,8 @@ int main(int argc, char *argv[])
 	(void)argc;
 	(void)argv;
 
-	
+	test_print_result();
 	//test_input_parse(argc, argv);
-	test_find_solution();
+	//test_find_solution();
 	return (0);
 }

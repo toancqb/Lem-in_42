@@ -28,6 +28,7 @@ t_room *ft_room_init()
   if (!(r->link = (t_roomlst**)malloc(sizeof(t_roomlst*))))
     exit(0);
   *(r->link) = NULL;
+  r->p = NULL;
   return (r);
 }
 

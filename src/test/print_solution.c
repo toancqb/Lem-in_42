@@ -1,5 +1,6 @@
 #include "ft_printf.h"
 #include "ft_find_solution.h"
+#include <stdio.h>
 
 void	print_rooms(t_global *glob)
 {
@@ -53,20 +54,20 @@ void	print_solution(t_global *glob)
 	solution = glob->solution;
 	pathlst = solution->pathlst;
 	i = 0;
-	ft_printf("The total number of steps is %d\n", solution->n_total_step);
+	printf("The total number of steps is %d\n", solution->n_total_step);
 	while (pathlst != NULL)
 	{
-		ft_printf("Path %d:\n", i);
-		ft_printf("The number of ant in the path is %d.\n", pathlst->nb_ant);
+		printf("Path %d:\n", i);
+		printf("The number of ant in the path is %d.\n", pathlst->nb_ant);
 		path = pathlst->path;
 		j = 0;
 		while (path != NULL)
 		{
-			ft_printf("Room %d: %s\n", j, path->r->name);
+			printf("Room %d: %s\n", j, path->r->name);
 			path = path->next;
 			j++;
 		}
 		i++;
 		pathlst = pathlst->next;
 	}
-}	
+}
