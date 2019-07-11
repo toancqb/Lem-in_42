@@ -45,6 +45,7 @@ void ft_move_current_ant(t_roomlst *ant, t_global *g)
   while (tmp != NULL)
   {
     if (tmp->r != NULL && ft_strcmp(tmp->r->name, g->end->name))
+		// ici pas besoin de strcmp tu peux faire tmp->r != g->end
       tmp->r = tmp->r->p;
     tmp = tmp->next;
   }
@@ -117,6 +118,7 @@ void print_line(t_roomlst *ant, int *check, t_room *end)
     if (check[tmp->rank] == 0 && tmp->r != NULL)
       printf("L%d-%s ", tmp->rank, tmp->r->name);
     if (tmp->r != NULL && !ft_strcmp(tmp->r->name, end->name))
+		// pareil ici tmp->r == end ca suffit
       check[tmp->rank] = 1;
     tmp = tmp->next;
   }

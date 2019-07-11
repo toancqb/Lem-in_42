@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 15:53:19 by gly               #+#    #+#             */
-/*   Updated: 2019/07/11 14:13:28 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/11 15:54:59 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define ACTIVISIT 3
 # define REV_UP 1 << 2
 # define REV_DOWN 1 << 3
-#include "ft_lib_lem_in.h"
+# include "ft_lib_lem_in.h"
 
 int			ft_find_global_solution(t_global *glob);
 int			ft_find_path(t_global *glob);

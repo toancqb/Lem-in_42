@@ -6,17 +6,15 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 09:42:58 by gly               #+#    #+#             */
-/*   Updated: 2019/03/20 10:54:54 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/11 15:44:52 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#define BUFFSIZE 1024
+# define BUFFSIZE 1024
 # include <stdarg.h>
-
-# include <stdio.h>
 
 # define FLAG " -+#*.0123456789lhLjzt"
 # define CONV "cspdiobuxXfF%"
@@ -40,8 +38,8 @@ typedef struct	s_conv
 {
 	int			flag;
 	int			width;
-	int 		acc;
-	int 		len;
+	int			acc;
+	int			len;
 	char		type;
 	int			i;
 }				t_conv;
@@ -55,7 +53,8 @@ int				ft_atoi_pf(const char *str, int *index);
 int				ft_strfill_space(char *str, int start, int len);
 int				ft_strfill_zero(char *str, int start, int len);
 int				ft_strfill_ll_base(char *str, long long nb, char *base);
-void			ft_str_add_flags(char *str, int *pos, t_conv conv, long long nb);
+void			ft_str_add_flags(char *str, int *pos, t_conv conv,
+		long long nb);
 int				ft_prefix_len(t_conv conv);
 void			ft_zero_case(t_conv conv);
 
