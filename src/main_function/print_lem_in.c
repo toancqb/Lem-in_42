@@ -120,6 +120,7 @@ void print_line(t_roomlst *ant, int *check, t_room *end)
     if (tmp->r != NULL && !ft_strcmp(tmp->r->name, end->name))
 		// pareil ici tmp->r == end ca suffit
       check[tmp->rank] = 1;
+	//la ca serait mieux de retirer les tmp qui sont a end, sinon a chaque fois tu parcoures beaucoup de room inutiles. Apres, avec les tests ca va assez vite donc pas vraiment necessaire.
     tmp = tmp->next;
   }
   printf("\n");
@@ -151,6 +152,7 @@ int print_lem_in_simple(t_global *g)
     return (0);
   process_path(g->solution);
   while (ft_nb_ant_in_end(check, g->nb_ant) < g->nb_ant)
+	  //je pense que le nb_ant_in_end peut etre juste un compteur (int)n et a chaque ft_move tu returns le nombre de fourmi qui ont atteint end et tu ajoutes a n. Optionnel aussi.
   {
     ft_move(ant, g);
     print_line(ant, check, g->end);
