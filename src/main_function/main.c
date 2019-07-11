@@ -6,40 +6,46 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 11:25:04 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/05 10:52:06 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/11 15:14:38 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include <stdlib.h>
+#include "ft_printf.h"
 #include "ft_lib_lem_in.h"
 #include "ft_find_solution.h"
-#include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-void	lem_in_simple(t_option *opt)
+static inline void	ft_print_info(t_global *g)
+{
+	write(1, "----INFORMATION----\n", 20);
+	ft_printf("Number of ants: %d\n", g->nb_ant);
+	ft_printf("Number of rooms adjacent to start: %d\n", g->start->nb_link);
+	ft_printf("Number of paths taken: %d\n", g->n_path);
+	ft_printf("Number of steps: %d\n", g->solution->n_total_step);
+	write(1, "------------------\n", 20);
+}
+
+static inline void	lem_in_simple(int opt)
 {
 	t_global *g;
 
 	g = ft_global_init();
 	ft_input_parsing(g, opt);
 	ft_find_global_solution(g);
-	if (opt->i)
-	{
-		printf("Le nombre de fourmi est %d\n", g->nb_ant);
-		printf("START %s \n", g->start->name);
-		printf("End is %s\n", g->end->name);
-		print_solution(g);
-	}
+	if (opt & OPT_P)
+		ft_print_solution(g->solution);
 	print_lem_in_simple(g);
+	if (opt & OPT_I)
+		ft_print_info(g);
 	ft_global_free(&g);
 }
 
-int main(int argc, char *argv[])
+int 				main(int argc, char *argv[])
 {
-	t_option *opt;
+	int		opt;
 
-	opt = ft_opt_init();
-	ft_opt_input_parsing(opt, argc, argv);
+	opt = ft_opt_input_parsing(argc, argv);
 	lem_in_simple(opt);
 	return (0);
 }

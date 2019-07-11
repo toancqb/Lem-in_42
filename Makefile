@@ -6,7 +6,7 @@
 #    By: gly <marvin@42.fr>                         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/02 09:45:18 by gly               #+#    #+#              #
-#    Updated: 2019/07/09 14:32:42 by gly              ###   ########.fr        #
+#    Updated: 2019/07/11 14:38:51 by gly              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,16 +26,24 @@ LIBFT		= $(addprefix $(LIBFT_PATH), libft.a)
 LIBFT_FLAG	= -lft -L libft
 RM			= /bin/rm -f
 BUILD_PATH	= \
+	$(SRC_MAIN_PATH) \
 	$(SRC_SOLUTION_PATH) \
 	$(SRC_INPUT_PATH) \
 	$(SRC_ROOMLST_PATH) \
 	$(SRC_MISC_PATH)
 
 SRC			= \
+	$(addprefix $(SRC_MAIN_PATH), $(SRC_MAIN)) \
 	$(addprefix $(SRC_SOLUTION_PATH), $(SRC_SOLUTION)) \
 	$(addprefix $(SRC_INPUT_PATH), $(SRC_INPUT)) \
 	$(addprefix $(SRC_ROOMLST_PATH), $(SRC_ROOMLST)) \
 	$(addprefix $(SRC_MISC_PATH), $(SRC_MISC))
+
+SRC_MAIN_PATH = main_function/
+SRC_MAIN = \
+	main.c \
+	ft_print_solution.c \
+	print_lem_in.c 
 
 SRC_SOLUTION_PATH = find_solution/
 SRC_SOLUTION = \
@@ -77,9 +85,7 @@ SRC_MISC = \
 all : $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT_FLAG) -o $@ src/main_function/main.c \
-		src/main_function/print_solution.c src/main_function/print_working_path.c \
-		src/main_function/print_lem_in.c
+	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT_FLAG) -o $@ 
 
 $(LIBFT) :
 	make -C libft

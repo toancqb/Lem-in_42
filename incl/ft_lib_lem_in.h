@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 11:24:47 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/04 11:06:55 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/11 15:11:05 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <sys/types.h>
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
+
+# define OPT_I 1
+# define OPT_S 1 << 1
+# define OPT_P 1 << 2
 
 typedef struct		s_room
 {
@@ -36,7 +40,6 @@ typedef struct s_roomlst
   int rank;
   struct s_roomlst *next;
 } t_roomlst;
-
 
 typedef struct		s_pathlst
 {
@@ -84,21 +87,19 @@ typedef struct s_input
   int n_read;
 } t_input;
 
-typedef struct s_option
-{
-	int s;
-	int i;
-	int p;
-}	t_option;
-
 void ft_putstr_ln(char *str);
 void ft_error();
 void ft_strerror(char *str);
 int ft_is_double_room(t_global *g, char *tmp);
 int ft_check_format_line(char *line, t_input *input);
 int is_in_intmax(const char *line);
+
 t_room *ft_room_init();
 void ft_room_free(t_room **room);
+char *ft_get_name(char *line);
+t_room *ft_room_new(char *name);
+t_room *ft_get_room_by_line(t_global *global, char *line, int flag);
+
 t_roomlst *ft_roomlst_init(t_room *room);
 int ft_roomlst_len(t_roomlst *lst);
 void f_print_roomlst(t_roomlst *r);
@@ -109,15 +110,11 @@ void ft_roomlst_push(t_roomlst **lst, t_roomlst *elem);
 t_roomlst *ft_roomlst_shift(t_roomlst **lst);
 t_roomlst *ft_roomlst_pop(t_roomlst **lst);
 void ft_roomlst_delall(t_roomlst **lst);
-char *ft_get_name(char *line);
-t_room *ft_room_new(char *name);
-t_room *ft_get_room_by_line(t_global *global, char *line, int flag);
-
 t_roomlst	*ft_roomlst_new(t_room *room, int rank);
 void		ft_roomlst_add_rank(t_roomlst **roomlst, t_roomlst *elem);
 
-t_option *ft_opt_init(void);
-void ft_opt_input_parsing(t_option *opt, int argc, char **argv);
+int		ft_opt_input_parsing(int argc, char **argv);
+
 t_global *ft_global_init();
 void ft_global_free(t_global **global);
 
@@ -131,13 +128,9 @@ void ft_parse_command(char *line, t_input *input);
 int ft_parse_room_tmp(char *line, t_global *global, t_input *input);
 int ft_parse_link(char *line, t_global *global, t_input *input);
 void ft_parse_room(t_global *global);
-int ft_input_parsing(t_global *global, t_option *opt);
+int ft_input_parsing(t_global *global, int opt);
 
-void	print_solution(t_global *glob);
-void	print_working_path(t_global *glob);
-void	print_rooms(t_global *glob);
-void	print_pathlst(t_pathlst *pathlst);
-void	print_rstatus(t_global *glob);
+void	ft_print_solution(t_solution *sol);
 int print_lem_in_simple(t_global *g);
 
 #endif

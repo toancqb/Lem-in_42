@@ -1,52 +1,56 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_option.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/11 14:44:29 by gly               #+#    #+#             */
+/*   Updated: 2019/07/11 14:48:33 by gly              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "ft_lib_lem_in.h"
 
-t_option *ft_opt_init(void)
+static inline int	process_opt(int opt, char *str)
 {
-  t_option *opt;
-
-  if (!(opt = (t_option*)malloc(sizeof(t_option))))
-    return (NULL);
-  opt->s = 0;
-  opt->i = 0;
-  opt->p = 0;
-  return (opt);
+	if (str)
+	{
+		if (str[0] != '-')
+			ft_strerror("Usage: ./lem-in -option < map.txt");
+		else
+		{
+			str++;
+			while (*str != '\0')
+			{
+				if (*str == 'i')
+					opt |= OPT_I;
+				else if (*str == 's')
+					opt |= OPT_S;
+				else if (*str == 'p')
+					opt |= OPT_P;
+				str++;
+			}
+		}
+	}
+	return (opt);
 }
 
-static void process_opt(t_option *opt, char *str)
+int				 	ft_opt_input_parsing(int argc, char **argv)
 {
-  if (str)
-  {
-    if (str[0] != '-')
-      ft_strerror("Usage: ./lem-in -option < map.txt");
-    else
-    {
-      str++;
-      while (*str != '\0')
-      {
-        if (*str == 'i')
-          opt->i = 1;
-        else if (*str == 's')
-          opt->s = 1;
-        else if (*str == 'p')
-          opt->p = 1;
-        str++;
-      }
-    }
-  }
-}
+	int		i;
+	int		opt;
 
-void ft_opt_input_parsing(t_option *opt, int argc, char **argv)
-{
-  int i;
-
-  if (argc > 1)
-  {
-     i = 1;
-     while (i < argc)
-     {
-       process_opt(opt, argv[i]);
-       i++;
-     }
-  }
+	opt = 0;
+	if (argc > 1)
+	{
+		i = 1;
+		while (i < argc)
+		{
+			opt = process_opt(opt, argv[i]);
+			i++;
+		}
+	}
+	return (opt);
 }

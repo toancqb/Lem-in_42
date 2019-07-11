@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 13:10:47 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/04 11:50:43 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/11 14:40:44 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void ft_check_input(t_global *g)
 
 }
 
-int ft_input_parsing(t_global *global, t_option *opt)
+int ft_input_parsing(t_global *global, int opt)
 {
   ssize_t size;
   char *line;
@@ -67,7 +67,7 @@ int ft_input_parsing(t_global *global, t_option *opt)
       else if (is_link(line) && (!ft_parse_link(line, global, input)))
         break ;
     }
-    if (!opt->s)
+    if (!(opt & OPT_S))
       ft_putstr_ln(line);
     free(line);
   }
