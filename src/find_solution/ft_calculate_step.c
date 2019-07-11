@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 09:29:23 by gly               #+#    #+#             */
-/*   Updated: 2019/07/04 11:02:49 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/11 13:26:04 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ static inline int	ft_get_min_step(t_pathlst *path)
 	return (min_step);
 }
 
+static inline int	ft_get_remain(t_pathlst *path, int remain, int min_step)
+{
+	while (path != NULL)
+	{
+		remain += path->n_step - min_step;
+		path = path->next;
+	}
+	return (remain);
+}
+
 int					ft_calculate_step(t_global *glob,
 		int n_path, t_solution *solution)
 {
@@ -33,17 +43,14 @@ int					ft_calculate_step(t_global *glob,
 	int			min_step;
 	t_pathlst	*path;
 
+	path = solution->pathlst;
 	if (n_path == 1)
-		return (solution->pathlst->n_step + glob->nb_ant - 1);
-	remain = glob->nb_ant % n_path;
-	min_step = ft_get_min_step(solution->pathlst);
-	path = solution->pathlst;
-	while (path != NULL)
 	{
-		remain += path->n_step - min_step;
-		path = path->next;
+		path->nb_ant = glob->nb_ant;
+		return (solution->pathlst->n_step + glob->nb_ant - 1);
 	}
-	path = solution->pathlst;
+	min_step = ft_get_min_step(solution->pathlst);
+	remain = ft_get_remain(solution->pathlst, glob->nb_ant % n_path, min_step);
 	while (path != NULL)
 	{
 		path->nb_ant = glob->nb_ant / n_path - (path->n_step - min_step)
