@@ -2,3 +2,5 @@
 **/*.out
 **/*.o
 **/*.a
+lem-in
+lem-in.dSYM

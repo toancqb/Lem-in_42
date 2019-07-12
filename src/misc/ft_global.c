@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 11:08:29 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/12 11:08:34 by qtran            ###   ########.fr       */
+/*   Updated: 2019/07/12 16:20:16 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,7 @@ void ft_global_free(t_global **global)
   if (g->r_status)
     free(g->r_status);
   if (g->solution != NULL)
-  {
     ft_free_solution(&(g->solution));
-    free(g->solution);
-  }
   while (g->rooms[i] != NULL)
   {
     ft_room_free(&(g->rooms[i]));

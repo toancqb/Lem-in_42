@@ -34,9 +34,10 @@ do
 	./../generator $opt > tmp.map
 	exp="$(tail -n 1 tmp.map | rev | cut -d' ' -f1 | rev)"
 	tt=$((time ./lem-in < tmp.map) 2>&1 | tail -n 3 | grep real | rev | cut -f1 | rev)
-	obs=$(./lem-in -i < tmp.map | grep 'number of steps' | rev | cut -d' ' -f1 | rev)
+	obs=$(./lem-in -i < tmp.map | grep 'Number of steps' | rev | cut -d' ' -f1 | rev)
 	diff=$(echo "$obs - $exp" | bc)
 	echo "----------------------"
+	echo "Test $i"
 	echo "Expected: $exp steps."
 	echo -n "Observed: $obs steps."
 	if [[ $diff -gt 0 ]]
@@ -49,5 +50,4 @@ do
 		echo -e "(${GREEN}${diff}${NC})"
 	fi
 	echo "Time: ${tt}."	
-	sleep 1
 done
