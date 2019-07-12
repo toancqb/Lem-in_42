@@ -45,6 +45,7 @@ inline static int	ft_optimize_solution(t_global *glob, t_solution *solution)
 	if ((n_step = ft_calculate_step(glob, glob->n_path + 1, solution)) == -1)
 	{
 		ft_free_solution(&solution);
+		free(solution);
 		return (1);
 	}
 	if (glob->n_path == 0 || n_step < glob->solution->n_total_step)
@@ -58,6 +59,7 @@ inline static int	ft_optimize_solution(t_global *glob, t_solution *solution)
 		return (0);
 	}
 	ft_free_solution(&solution);
+	free(solution);
 	return (1);
 }
 
