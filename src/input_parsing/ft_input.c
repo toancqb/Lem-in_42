@@ -24,6 +24,7 @@ t_input *ft_input_init()
   input->type = -1;
   input->index = 0;
   input->check = 0;
+  input->detect = 0;
   input->n_read = -1;
   return (input);
 }
@@ -55,18 +56,19 @@ int ft_input_parsing(t_global *global, int opt)
   {
     if (!is_comment(line))
     {
-      if (!ft_check_format_line(line, input))
+      input->detect = ft_check_format_line(line, input);
+      if (input->detect == 0)
         break ;
-      else if (is_nb_ant(line) && (!ft_parse_nb_ant(line, global, input)))
+      if (input->detect == 1 && (!ft_parse_nb_ant(line, global, input)))
         break ;
-      else if (is_command(line))
+      else if (input->detect == 2)
         ft_parse_command(line, input);
-      else if (is_room(line) == -1)
-        ft_error();
-      else if (is_room(line) == 1
+      else if (is_room(line) == -1) //
+        ft_error();                 //
+      else if (input->detect == 3
       && (!(ft_parse_room_tmp(line, global, input))))
         break ;
-      else if (is_link(line) && (!ft_parse_link(line, global, input)))
+      else if (input->detect == 4 && (!ft_parse_link(line, global, input)))
         break ;
     }
     if (!(opt & OPT_S))

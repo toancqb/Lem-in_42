@@ -17,8 +17,7 @@
 #include "ft_lib_lem_in.h"
 #include "ft_find_solution.h"
 
-/* error_3 , 4, 6, 11
- * in link, room1-room2; what if room1/room2 doesn't exist?
+/* error_ 4, 6, 11
  *
  * sujet4
  * errors of print_lem_in: 5

@@ -85,6 +85,7 @@ typedef struct s_input
 	int check;
 	int index;
 	int n_read;
+	int detect;
 } t_input;
 
 /* room manipulators */
