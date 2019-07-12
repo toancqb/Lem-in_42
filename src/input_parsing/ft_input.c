@@ -33,7 +33,7 @@ int ft_fin(ssize_t size, char **line, t_input **input)
 {
   int c;
 
-  if ((*input)->check && line)
+  if ((*input)->check && *line)
     free(*line);
   c = (*input)->detect;
   free(*input);

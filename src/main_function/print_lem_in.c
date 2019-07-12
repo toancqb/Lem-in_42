@@ -167,8 +167,12 @@ int print_lem_in_simple(t_global *g)
   if (g->solution)
     process_path(g->solution);
   else
+  {
+    free(check);
+    ft_roomlst_delall(&ant);
     return (-1);
-    ft_putstr("\n");
+  }
+  ft_putstr("\n");
   while (ft_nb_ant_in_end(check, g->nb_ant) < g->nb_ant)
 	  //je pense que le nb_ant_in_end peut etre juste un compteur (int)n et a chaque ft_move tu returns le nombre de fourmi qui ont atteint end et tu ajoutes a n. Optionnel aussi.
   {
@@ -176,6 +180,7 @@ int print_lem_in_simple(t_global *g)
     print_line(ant, check, g->end);
   }
   ft_roomlst_delall(&ant);
+  free(ant);
   free(check);
   return (1);
 }
