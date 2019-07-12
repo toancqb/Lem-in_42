@@ -14,6 +14,7 @@
 # define FT_LIB_LEM_IN_H
 # define STDIN_DEFAULT 0
 # include <string.h>
+# include <sys/types.h>
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 

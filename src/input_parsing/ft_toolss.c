@@ -66,14 +66,20 @@ int ft_check_format_line(char *line, t_input *input)
   }
   c = is_nb_ant(line);
   if (c == -1)
+  {
+    input->check = 1;
     return (-1);
+  }
   else if (c)
     return (1);
   if (is_command(line))
     return (2);
   c = is_room(line);
   if (c == -1)
+  {
+    input->check = 1;
     return (-1);
+  }
   else if (is_room(line))
     return (3);
   if (is_link(line))
