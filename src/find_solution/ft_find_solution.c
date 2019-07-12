@@ -58,6 +58,7 @@ inline static int	ft_optimize_solution(t_global *glob, t_solution *solution)
 		return (0);
 	}
 	ft_free_solution(&solution);
+	free(solution);
 	return (1);
 }
 

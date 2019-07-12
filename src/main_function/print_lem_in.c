@@ -175,6 +175,7 @@ int print_lem_in_simple(t_global *g)
     ft_move(ant, g);
     print_line(ant, check, g->end);
   }
+  ft_roomlst_delall(&ant);
   free(check);
   return (1);
 }

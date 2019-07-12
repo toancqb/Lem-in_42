@@ -44,6 +44,7 @@ void ft_room_free(t_room **room)
     r = *room;
     if (r->name)
       free(r->name);
+    ft_roomlst_delall(r->link);
     free(r->link);
     free(*room);
   }
@@ -59,11 +60,27 @@ void ft_global_free(t_global **global)
   if (g->r_status)
     free(g->r_status);
   if (g->solution != NULL)
-  	ft_free_solution(&(g->solution));
+  {
+    ft_free_solution(&(g->solution));
+    free(g->solution);
+  }
   while (g->rooms[i] != NULL)
   {
     ft_room_free(&(g->rooms[i]));
     i++;
   }
+  if (g->working_path)
+  {
+    i = 0;
+    while (g->working_path[i] != NULL)
+    {
+      free(g->working_path[i]);
+      i++;
+    }
+    free(g->working_path);
+  }
+  free(g->rooms);
+  ft_roomlst_delall(g->r_tmp);
+  free(g->r_tmp);
   free(g);
 }

@@ -50,6 +50,7 @@ int ft_parse_room_tmp(char *line, t_global *global, t_input *input)
   if (!ft_is_double_room(global, tmp))
   {
     input->check = 1;
+    free(tmp);
     return (0);
   }
   r = ft_room_new(tmp);
