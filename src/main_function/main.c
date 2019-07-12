@@ -62,7 +62,7 @@ static inline void	lem_in_simple(int opt)
 	g = ft_global_init();
 	if (ft_input_parsing(g, opt) == -1)
 	{
-		ft_putstr("Error_kaka\n");
+		ft_putstr("Error\n");
 		ft_global_free(&g);
 		exit(0);
 	}
@@ -74,7 +74,7 @@ static inline void	lem_in_simple(int opt)
 		if (opt & OPT_P)
 			ft_print_solution(g->solution);
 		if (print_lem_in_simple(g) == -1)
-			ft_putstr("ErrorHehe\n");
+			ft_putstr("Error\n");
 	}
 	if (opt & OPT_I)
 		ft_print_info(g);
