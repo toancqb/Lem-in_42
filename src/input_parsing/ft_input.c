@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "ft_lib_lem_in.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "libft.h"
 
 t_input *ft_input_init()
@@ -68,7 +68,7 @@ int ft_input_parsing(t_global *global, int opt)
         break ;
     }
     if (!(opt & OPT_S))
-      ft_putstr_ln(line);
+      ft_putendl(line);
     free(line);
   }
   ft_parse_room(global);

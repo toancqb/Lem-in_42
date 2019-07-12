@@ -12,6 +12,7 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include "libft.h"
 #include "ft_printf.h"
 #include "ft_lib_lem_in.h"
 #include "ft_find_solution.h"
@@ -35,7 +36,8 @@ static inline void	lem_in_simple(int opt)
 	ft_find_global_solution(g);
 	if (opt & OPT_P)
 		ft_print_solution(g->solution);
-	print_lem_in_simple(g);
+	if (print_lem_in_simple(g) == -1)
+		ft_putstr("Error\n");
 	if (opt & OPT_I)
 		ft_print_info(g);
 	ft_global_free(&g);

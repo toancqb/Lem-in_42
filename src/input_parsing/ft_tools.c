@@ -1,13 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tools.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/12 11:09:43 by qtran             #+#    #+#             */
+/*   Updated: 2019/07/12 11:09:50 by qtran            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_lib_lem_in.h"
 #include "libft.h"
 #include <stdlib.h>
-
-void ft_putstr_ln(char *str)
-{
-  ft_putstr(str);
-  ft_putchar('\n');
-}
-//cette fonction existe dans la libft, c'est ft_putendl(const char *str).
 
 char *ft_get_name(char *line)
 {

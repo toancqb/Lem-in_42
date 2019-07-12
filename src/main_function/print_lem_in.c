@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_lem_in.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/12 11:07:22 by qtran             #+#    #+#             */
+/*   Updated: 2019/07/12 11:07:31 by qtran            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_lib_lem_in.h"
 #include "ft_find_solution.h"
+#include "ft_printf.h"
 #include "libft.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -44,8 +57,7 @@ void ft_move_current_ant(t_roomlst *ant, t_global *g)
   tmp = ant;
   while (tmp != NULL)
   {
-    if (tmp->r != NULL && ft_strcmp(tmp->r->name, g->end->name))
-		// ici pas besoin de strcmp tu peux faire tmp->r != g->end
+    if (tmp->r != NULL && tmp->r != g->end)
       tmp->r = tmp->r->p;
     tmp = tmp->next;
   }
@@ -116,14 +128,16 @@ void print_line(t_roomlst *ant, int *check, t_room *end)
   while (tmp != NULL)
   {
     if (check[tmp->rank] == 0 && tmp->r != NULL)
-      printf("L%d-%s ", tmp->rank, tmp->r->name);
-    if (tmp->r != NULL && !ft_strcmp(tmp->r->name, end->name))
-		// pareil ici tmp->r == end ca suffit
+      ft_printf("L%d-%s ", tmp->rank, tmp->r->name);
+    if (tmp->r != NULL && tmp->r == end)
       check[tmp->rank] = 1;
-	//la ca serait mieux de retirer les tmp qui sont a end, sinon a chaque fois tu parcoures beaucoup de room inutiles. Apres, avec les tests ca va assez vite donc pas vraiment necessaire.
+	/*la ca serait mieux de retirer les tmp qui sont a end,
+   *sinon a chaque fois tu parcoures beaucoup de room inutiles.
+   *Apres, avec les tests ca va assez vite donc pas vraiment necessaire.
+   */
     tmp = tmp->next;
   }
-  printf("\n");
+  ft_putstr("\n");
 }
 
 void ft_check_init(int *check, int nb_ant)
@@ -150,7 +164,11 @@ int print_lem_in_simple(t_global *g)
   ft_check_init(check, g->nb_ant);
   if (ant == NULL)
     return (0);
-  process_path(g->solution);
+  if (g->solution)
+    process_path(g->solution);
+  else
+    return (-1);
+    ft_putstr("\n");
   while (ft_nb_ant_in_end(check, g->nb_ant) < g->nb_ant)
 	  //je pense que le nb_ant_in_end peut etre juste un compteur (int)n et a chaque ft_move tu returns le nombre de fourmi qui ont atteint end et tu ajoutes a n. Optionnel aussi.
   {

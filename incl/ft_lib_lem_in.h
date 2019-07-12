@@ -14,7 +14,6 @@
 # define FT_LIB_LEM_IN_H
 # define STDIN_DEFAULT 0
 # include <string.h>
-# include <sys/types.h>
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
@@ -132,7 +131,6 @@ void	ft_print_solution(t_solution *sol);
 int print_lem_in_simple(t_global *g);
 
 /* misc */
-void ft_putstr_ln(char *str);
 void ft_error();
 void ft_strerror(char *str);
 int ft_is_double_room(t_global *g, char *tmp);
