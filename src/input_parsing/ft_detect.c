@@ -49,7 +49,7 @@ int is_nb_ant(char *line)
     i++;
   }
   if (!is_in_intmax(line))
-    ft_error();
+    return (-1);
   return (1);
 }
 

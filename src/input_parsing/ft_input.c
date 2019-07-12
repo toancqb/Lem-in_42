@@ -29,20 +29,26 @@ t_input *ft_input_init()
   return (input);
 }
 
-void ft_fin(ssize_t size, char **line, t_input **input)
+int ft_fin(ssize_t size, char **line, t_input **input)
 {
+  int c;
+
   if ((*input)->check && line)
     free(*line);
+  c = (*input)->detect;
   free(*input);
   if (size == -1)
     perror("Error GNL: ");
+  if (c == -1)
+    return (-1);
+  return (0);
 }
 
-void ft_check_input(t_global *g)
+int ft_check_input(t_global *g)
 {
   if (g->nb_ant == -1 || g->start == NULL || g->end == NULL)
-    ft_error();
-
+    return (-1);
+  return (0);
 }
 
 int ft_input_parsing(t_global *global, int opt)
@@ -57,14 +63,12 @@ int ft_input_parsing(t_global *global, int opt)
     if (!is_comment(line))
     {
       input->detect = ft_check_format_line(line, input);
-      if (input->detect == 0)
+      if (input->detect == 0 || input->detect == -1)
         break ;
       if (input->detect == 1 && (!ft_parse_nb_ant(line, global, input)))
         break ;
       else if (input->detect == 2)
         ft_parse_command(line, input);
-      else if (is_room(line) == -1) //
-        ft_error();                 //
       else if (input->detect == 3
       && (!(ft_parse_room_tmp(line, global, input))))
         break ;
@@ -76,7 +80,7 @@ int ft_input_parsing(t_global *global, int opt)
     free(line);
   }
   ft_parse_room(global);
-  ft_fin(size, &line, &input);
-  ft_check_input(global);
-  return (0);
+  if (ft_fin(size, &line, &input) == -1)
+    return (-1);
+  return (ft_check_input(global));
 }

@@ -66,7 +66,12 @@ static inline void	lem_in_simple(int opt)
 	t_global *g;
 
 	g = ft_global_init();
-	ft_input_parsing(g, opt);
+	if (ft_input_parsing(g, opt) == -1)
+	{
+		ft_putstr("Error\n");
+		ft_global_free(&g);
+		exit(0);
+	}
 	if (ft_is_next_to(g->start, g->end))
 		ft_print_adjacent_end(g);
 	else

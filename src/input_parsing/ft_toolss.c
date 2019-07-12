@@ -57,24 +57,24 @@ int	is_in_intmax(const char *str)
 
 int ft_check_format_line(char *line, t_input *input)
 {
-  /*if (!(line[0] == '\0') && (is_nb_ant(line) || is_command(line)
-                            || is_room(line) || is_link(line)))
-    return (1);
-  else
-  {
-    input->check = 1;
-    return (0);
-  }*/
+  int c;
+
   if (line[0] == '\0')
   {
     input->check = 1;
     return (0);
   }
-  if (is_nb_ant(line))
+  c = is_nb_ant(line);
+  if (c == -1)
+    return (-1);
+  else if (c)
     return (1);
   if (is_command(line))
     return (2);
-  if (is_room(line))
+  c = is_room(line);
+  if (c == -1)
+    return (-1);
+  else if (is_room(line))
     return (3);
   if (is_link(line))
     return (4);
