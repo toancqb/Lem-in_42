@@ -61,7 +61,9 @@ int ft_input_parsing(t_global *global, int opt)
         break ;
       else if (is_command(line))
         ft_parse_command(line, input);
-      else if (is_room(line)
+      else if (is_room(line) == -1)
+        ft_error();
+      else if (is_room(line) == 1
       && (!(ft_parse_room_tmp(line, global, input))))
         break ;
       else if (is_link(line) && (!ft_parse_link(line, global, input)))

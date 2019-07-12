@@ -63,7 +63,7 @@ int is_room(char *line)
   if (line == NULL)
     return (-1);
   if (line[0] == 'L')
-    return (0);
+    return (-1);
   while (line[i] != '\0' && line[i] != ' ')
     i++;
   while (line[i] != '\0')
@@ -71,9 +71,11 @@ int is_room(char *line)
     if (line[i] == ' ')
       count++;
     else if (line[i] < '0' || line[i] > '9')
-      return (0);
+      return (-1);
     i++;
   }
+  if (count > 2)
+    return (-1);
   return ((count == 2)? 1 : 0);
 }
 
