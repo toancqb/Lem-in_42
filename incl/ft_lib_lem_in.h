@@ -117,11 +117,12 @@ int						is_link(char *line);
 int						ft_parse_nb_ant(char *line, t_global *global,
 		t_input *input);
 void					ft_parse_command(char *line, t_input *input);
-int						ft_parse_room_tmp(char *line, t_global *global,
+int						ft_pr_tmp(char *line, t_global *global,
 		t_input *input);
-int						ft_parse_link(char *line, t_global *global,
+int						ft_p_l(char *line, t_global *global,
 		t_input *input);
 void					ft_parse_room(t_global *global);
+int ft_db_room(t_global *g, char **tmp, t_input *input);
 
 void					ft_print_solution(t_solution *sol);
 int						print_lem_in_simple(t_global *g);

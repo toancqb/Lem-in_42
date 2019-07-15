@@ -55,15 +55,22 @@ int		is_in_intmax(const char *str)
 	return (1);
 }
 
+static int ft_is_empty_line(char *line, t_input *input)
+{
+	if (line && line[0] == '\0')
+	{
+		input->check = 1;
+		return (1);
+	}
+	return (0);
+}
+
 int		ft_check_format_line(char *line, t_input *input)
 {
 	int c;
 
-	if (line[0] == '\0')
-	{
-		input->check = 1;
+	if (ft_is_empty_line(line, input))
 		return (0);
-	}
 	c = is_nb_ant(line);
 	if (c == -1)
 	{

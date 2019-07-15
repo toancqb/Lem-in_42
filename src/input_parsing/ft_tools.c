@@ -99,3 +99,14 @@ t_room	*ft_get_room_by_line(t_global *global, char *line, int flag)
 	free(s);
 	return (NULL);
 }
+
+int ft_db_room(t_global *g, char **tmp, t_input *input)
+{
+	if (!ft_is_double_room(g, *tmp))
+	{
+		input->check = 1;
+		free(*tmp);
+		return (1);
+	}
+	return (0);
+}

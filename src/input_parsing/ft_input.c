@@ -51,7 +51,7 @@ int			ft_check_input(t_global *g)
 	return (0);
 }
 
-int			ft_input_parsing(t_global *global, int opt)
+int			ft_input_parsing(t_global *global, int opt) // 30 lines
 {
 	ssize_t	size;
 	char	*line;
@@ -69,11 +69,9 @@ int			ft_input_parsing(t_global *global, int opt)
 				break ;
 			else if (input->detect == 2)
 				ft_parse_command(line, input);
-			else if (input->detect == 3
-					&& (!(ft_parse_room_tmp(line, global, input))))
+			else if (input->detect == 3 && (!(ft_pr_tmp(line, global, input))))
 				break ;
-			else if (input->detect == 4 &&
-					(!ft_parse_link(line, global, input)))
+			else if (input->detect == 4 && (!ft_p_l(line, global, input)))
 				break ;
 		}
 		if (!(opt & OPT_S))
@@ -81,7 +79,5 @@ int			ft_input_parsing(t_global *global, int opt)
 		free(line);
 	}
 	ft_parse_room(global);
-	if (ft_fin(size, &line, &input) == -1)
-		return (-1);
-	return (ft_check_input(global));
+	return ((ft_fin(size, &line, &input) == -1) ? -1 : ft_check_input(global));
 }

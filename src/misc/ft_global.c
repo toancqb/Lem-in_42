@@ -13,7 +13,7 @@
 #include "ft_lib_lem_in.h"
 #include "ft_find_solution.h"
 #include <stdlib.h>
-#include "libft.h" //
+#include "libft.h"
 
 t_global	*ft_global_init(void)
 {
@@ -51,6 +51,17 @@ void		ft_room_free(t_room **room)
 	}
 }
 
+static void ft_working_path_free(char **wp)
+{
+	int i;
+
+	while (wp[i] != NULL)
+	{
+		free(wp[i]);
+		i++;
+	}
+}
+
 void		ft_global_free(t_global **global)
 {
 	int			i;
@@ -69,13 +80,8 @@ void		ft_global_free(t_global **global)
 	}
 	if (g->working_path)
 	{
-		/*i = 0;
-		while (g->working_path[i] != NULL)
-		{
-			free(g->working_path[i]);
-			i++;
-		}
-		free(g->working_path);*/
+		ft_working_path_free(g->working_path);
+		free(g->working_path);
 	}
 	if (g->rooms)
 		free(g->rooms);

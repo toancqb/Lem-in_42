@@ -34,7 +34,7 @@ void	ft_parse_command(char *line, t_input *input)
 		input->type = 0;
 }
 
-int		ft_parse_room_tmp(char *line, t_global *global, t_input *input)
+int		ft_pr_tmp(char *line, t_global *global, t_input *input)//30 lines
 {
 	t_room		*r;
 	t_roomlst	*rlst;
@@ -47,17 +47,12 @@ int		ft_parse_room_tmp(char *line, t_global *global, t_input *input)
 		return (0);
 	}
 	tmp = ft_get_name(line);
-	if (!ft_is_double_room(global, tmp))
-	{
-		input->check = 1;
-		free(tmp);
+	if (ft_db_room(global, &tmp, input))
 		return (0);
-	}
 	r = ft_room_new(tmp);
 	free(tmp);
 	r->i = (input->index)++;
 	(global->nb_room)++;
-	r->ant_cur = -1;
 	r->type = input->type;
 	if (input->type == 0)
 		global->end = r;
@@ -69,7 +64,7 @@ int		ft_parse_room_tmp(char *line, t_global *global, t_input *input)
 	return (1);
 }
 
-int		ft_parse_link(char *line, t_global *global, t_input *input)
+int		ft_p_l(char *line, t_global *global, t_input *input)
 {
 	t_room	*r1;
 	t_room	*r2;
