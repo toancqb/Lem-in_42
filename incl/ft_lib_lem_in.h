@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 11:24:47 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/11 15:57:35 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/15 16:59:49 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_LIB_LEM_IN_H
 # define STDIN_DEFAULT 0
 # include <string.h>
-# include <sys/types.h>
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
@@ -25,16 +24,16 @@
 typedef struct			s_room
 {
 	char				*name;
-	int 	      		ant_cur;
-	int     			type;
+	int					ant_cur;
+	int					type;
 	ssize_t				i;
 	int					nb_link;
 	struct s_roomlst	**link;
 	int					flag;
-	struct s_room 		*p;
+	struct s_room		*p;
 }						t_room;
 
-typedef struct 			s_roomlst
+typedef struct			s_roomlst
 {
 	t_room				*r;
 	int					rank;
@@ -69,74 +68,67 @@ typedef struct			s_global
 	int					n_path;
 }						t_global;
 
-/*
- * n_read = -1 haven't read nb_ant
- *
- *        = 0 had read nb_ant and ready for reading rooms
- *            (after read 1er rooms n_read = 1)
- *        = 1 had read rooms and ready for reading links
- *            (after read 1er link, n_read = 2)
- *        if n_read == 2 and we met room => Stop reading
- *        if n_read == 0 and we met link => Stop reading -> Error
- */
-
-typedef struct s_input
+typedef struct			s_input
 {
-	int type;
-	int check;
-	int index;
-	int n_read;
-	int detect;
-} t_input;
+	int					type;
+	int					check;
+	int					index;
+	int					n_read;
+	int					detect;
+}						t_input;
 
-/* room manipulators */
-t_room *ft_room_init();
-void ft_room_free(t_room **room);
-char *ft_get_name(char *line);
-t_room *ft_room_new(char *name);
-t_room *ft_get_room_by_line(t_global *global, char *line, int flag);
+t_room					*ft_room_init();
+void					ft_room_free(t_room **room);
+char					*ft_get_name(char *line);
+t_room					*ft_room_new(char *name);
+t_room					*ft_get_room_by_line(t_global *global,
+		char *line, int flag);
 
-/* roomlst manipulators */
-t_roomlst *ft_roomlst_init(t_room *room);
-int ft_roomlst_len(t_roomlst *lst);
-void f_print_roomlst(t_roomlst *r);
-t_roomlst *ft_roomlst_new(t_room *room, int rank);
-void ft_roomlst_iter(t_roomlst *lst, void (*f)(t_roomlst *r));
-void ft_roomlst_add(t_roomlst **lst, t_roomlst *elem);
-void ft_roomlst_push(t_roomlst **lst, t_roomlst *elem);
-t_roomlst *ft_roomlst_shift(t_roomlst **lst);
-t_roomlst *ft_roomlst_pop(t_roomlst **lst);
-void ft_roomlst_delall(t_roomlst **lst);
-t_roomlst	*ft_roomlst_new(t_room *room, int rank);
-void		ft_roomlst_add_rank(t_roomlst **roomlst, t_roomlst *elem);
+t_roomlst				*ft_ant_init(int nb_ant);
+int						ft_nb_ant_in_end(int *check, int nb_ant);
+void					ft_check_init(int *check, int nb_ant);
+void					ft_free_fin(t_roomlst **ant, int **check);
+t_roomlst				*ft_next_ant(t_roomlst *ant);
+t_roomlst				*ft_roomlst_init(t_room *room);
+int						ft_roomlst_len(t_roomlst *lst);
+void					f_print_roomlst(t_roomlst *r);
+t_roomlst				*ft_roomlst_new(t_room *room, int rank);
+void					ft_roomlst_iter(t_roomlst *lst,
+		void (*f)(t_roomlst *r));
+void					ft_roomlst_add(t_roomlst **lst, t_roomlst *elem);
+void					ft_roomlst_push(t_roomlst **lst, t_roomlst *elem);
+t_roomlst				*ft_roomlst_shift(t_roomlst **lst);
+t_roomlst				*ft_roomlst_pop(t_roomlst **lst);
+void					ft_roomlst_delall(t_roomlst **lst);
+t_roomlst				*ft_roomlst_new(t_room *room, int rank);
+void					ft_roomlst_add_rank(t_roomlst **roomlst,
+		t_roomlst *elem);
 
-/** global manipulators **/
-t_global *ft_global_init();
-void ft_global_free(t_global **global);
+t_global				*ft_global_init();
+void					ft_global_free(t_global **global);
 
-/* input parsing */
-int ft_input_parsing(t_global *global, int opt);
-int		ft_opt_input_parsing(int argc, char **argv);
-int is_command(char *line);
-int is_comment(char *line);
-int is_nb_ant(char *line);
-int is_room(char *line);
-int is_link(char *line);
-int ft_parse_nb_ant(char *line, t_global *global, t_input *input);
-void ft_parse_command(char *line, t_input *input);
-int ft_parse_room_tmp(char *line, t_global *global, t_input *input);
-int ft_parse_link(char *line, t_global *global, t_input *input);
-void ft_parse_room(t_global *global);
+int						ft_input_parsing(t_global *global, int opt);
+int						ft_opt_input_parsing(int argc, char **argv);
+int						is_command(char *line);
+int						is_comment(char *line);
+int						is_nb_ant(char *line);
+int						is_room(char *line);
+int						is_link(char *line);
+int						ft_parse_nb_ant(char *line, t_global *global,
+		t_input *input);
+void					ft_parse_command(char *line, t_input *input);
+int						ft_parse_room_tmp(char *line, t_global *global,
+		t_input *input);
+int						ft_parse_link(char *line, t_global *global,
+		t_input *input);
+void					ft_parse_room(t_global *global);
 
-/* output */
-void	ft_print_solution(t_solution *sol);
-int print_lem_in_simple(t_global *g);
+void					ft_print_solution(t_solution *sol);
+int						print_lem_in_simple(t_global *g);
 
-/* misc */
-void ft_error();
-void ft_strerror(char *str);
-int ft_is_double_room(t_global *g, char *tmp);
-int ft_check_format_line(char *line, t_input *input);
-int is_in_intmax(const char *line);
+void					ft_strerror(char *str);
+int						ft_is_double_room(t_global *g, char *tmp);
+int						ft_check_format_line(char *line, t_input *input);
+int						is_in_intmax(const char *line);
 
 #endif

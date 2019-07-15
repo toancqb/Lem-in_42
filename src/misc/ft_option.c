@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/11 14:44:29 by gly               #+#    #+#             */
-/*   Updated: 2019/07/11 14:48:33 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/15 16:52:07 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static inline int	process_opt(int opt, char *str)
 	return (opt);
 }
 
-int				 	ft_opt_input_parsing(int argc, char **argv)
+int					ft_opt_input_parsing(int argc, char **argv)
 {
 	int		i;
 	int		opt;

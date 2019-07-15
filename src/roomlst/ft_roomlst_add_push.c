@@ -6,13 +6,13 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 14:13:40 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/04 13:13:59 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/15 16:29:08 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib_lem_in.h"
 
-void ft_roomlst_add(t_roomlst **lst, t_roomlst *elem)
+void	ft_roomlst_add(t_roomlst **lst, t_roomlst *elem)
 {
 	if (lst)
 	{
@@ -26,7 +26,7 @@ void ft_roomlst_add(t_roomlst **lst, t_roomlst *elem)
 	}
 }
 
-void ft_roomlst_add_rank(t_roomlst **lst, t_roomlst *elem)
+void	ft_roomlst_add_rank(t_roomlst **lst, t_roomlst *elem)
 {
 	t_roomlst	*current;
 
@@ -51,7 +51,7 @@ void ft_roomlst_add_rank(t_roomlst **lst, t_roomlst *elem)
 	}
 }
 
-void ft_roomlst_add_second(t_roomlst **lst, t_roomlst *elem)
+void	ft_roomlst_add_second(t_roomlst **lst, t_roomlst *elem)
 {
 	if (lst)
 	{
@@ -65,9 +65,9 @@ void ft_roomlst_add_second(t_roomlst **lst, t_roomlst *elem)
 	}
 }
 
-void ft_roomlst_push(t_roomlst **lst, t_roomlst *elem)
+void	ft_roomlst_push(t_roomlst **lst, t_roomlst *elem)
 {
-	t_roomlst *tmp;
+	t_roomlst	*tmp;
 
 	if (lst)
 	{

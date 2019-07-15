@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 12:52:52 by qtran             #+#    #+#             */
-/*   Updated: 2019/06/25 12:52:53 by qtran            ###   ########.fr       */
+/*   Updated: 2019/07/15 16:52:22 by qtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 #include <stdlib.h>
 #include "libft.h"
 
-t_room *ft_room_init()
+t_room	*ft_room_init(void)
 {
-  t_room *r;
+	t_room	*r;
 
-  if (!(r = (t_room*)malloc(sizeof(t_room))))
-    exit(0);
-  r->ant_cur = -1;
-  r->type = -1;
-  r->nb_link = 0;
-  r->flag = -1;
-  r->name = NULL;
-  if (!(r->link = (t_roomlst**)malloc(sizeof(t_roomlst*))))
-    exit(0);
-  *(r->link) = NULL;
-  r->p = NULL;
-  return (r);
+	if (!(r = (t_room*)malloc(sizeof(t_room))))
+		exit(0);
+	r->ant_cur = -1;
+	r->type = -1;
+	r->nb_link = 0;
+	r->flag = -1;
+	r->name = NULL;
+	if (!(r->link = (t_roomlst**)malloc(sizeof(t_roomlst*))))
+		exit(0);
+	*(r->link) = NULL;
+	r->p = NULL;
+	return (r);
 }
 
-t_room *ft_room_new(char *name)
+t_room	*ft_room_new(char *name)
 {
-	t_room *r;
+	t_room	*r;
 
 	r = ft_room_init();
 	r->name = ft_strdup(name);

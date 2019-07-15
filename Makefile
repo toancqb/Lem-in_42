@@ -42,8 +42,9 @@ SRC			= \
 SRC_MAIN_PATH = main_function/
 SRC_MAIN = \
 	main.c \
+	ft_ant.c \
 	ft_print_solution.c \
-	print_lem_in.c 
+	print_lem_in.c
 
 SRC_SOLUTION_PATH = find_solution/
 SRC_SOLUTION = \
@@ -85,7 +86,7 @@ SRC_MISC = \
 all : $(NAME)
 
 $(NAME) : $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT_FLAG) -o $@ 
+	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT_FLAG) -o $@
 
 $(LIBFT) :
 	make -C libft
