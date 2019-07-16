@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 11:08:29 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/15 16:50:44 by qtran            ###   ########.fr       */
+/*   Updated: 2019/07/16 15:57:34 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,12 @@ void		ft_room_free(t_room **room)
 	}
 }
 
-static void ft_working_path_free(char **wp)
+static void ft_working_path_free(char **wp, int nb_room)
 {
 	int i;
 
-	while (wp[i] != NULL)
+	i = 0;
+	while (i < nb_room)
 	{
 		free(wp[i]);
 		i++;
@@ -80,7 +81,7 @@ void		ft_global_free(t_global **global)
 	}
 	if (g->working_path)
 	{
-		ft_working_path_free(g->working_path);
+		ft_working_path_free(g->working_path, g->nb_room);
 		free(g->working_path);
 	}
 	if (g->rooms)
