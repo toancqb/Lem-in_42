@@ -6,7 +6,7 @@
 /*   By: gly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 16:11:53 by gly               #+#    #+#             */
-/*   Updated: 2019/07/12 16:20:48 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/16 14:44:19 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ inline static int	ft_optimize_solution(t_global *glob, t_solution *solution)
 	if ((n_step = ft_calculate_step(glob, glob->n_path + 1, solution)) == -1)
 	{
 		ft_free_solution(&solution);
-		free(solution);
 		return (1);
 	}
 	if (glob->n_path == 0 || n_step < glob->solution->n_total_step)
@@ -59,7 +58,6 @@ inline static int	ft_optimize_solution(t_global *glob, t_solution *solution)
 		return (0);
 	}
 	ft_free_solution(&solution);
-	free(solution);
 	return (1);
 }
 
@@ -94,7 +92,10 @@ int					ft_find_global_solution(t_global *glob)
 		if (!(solution = ft_solution_new()))
 			return (-1);
 		if ((ret = ft_find_solution_for_n_path(glob, solution)) != 0)
+		{
+			free(solution);
 			return (ret);
+		}
 		if (ft_optimize_solution(glob, solution))
 			return (0);
 		i++;

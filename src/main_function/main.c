@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 11:25:04 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/12 14:12:17 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/16 14:38:03 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static inline void	ft_print_adjacent_end(t_global *g)
 	write(1, "\n", 1);
 }
 
-static inline void	lem_in_simple(int opt)
+static inline int	lem_in_simple(int opt)
 {
 	t_global *g;
 
@@ -64,13 +64,14 @@ static inline void	lem_in_simple(int opt)
 	{
 		ft_putstr("Error\n");
 		ft_global_free(&g);
-		exit(0);
+		exit(1);
 	}
 	if (ft_is_next_to(g->start, g->end))
 		ft_print_adjacent_end(g);
 	else
 	{
-		ft_find_global_solution(g);
+		if (ft_find_global_solution(g) == -1)
+			exit(1);
 		if (opt & OPT_P)
 			ft_print_solution(g->solution);
 		if (print_lem_in_simple(g) == -1)
@@ -79,6 +80,7 @@ static inline void	lem_in_simple(int opt)
 	if (opt & OPT_I)
 		ft_print_info(g);
 	ft_global_free(&g);
+	return (0);
 }
 
 int					main(int argc, char *argv[])
@@ -86,6 +88,7 @@ int					main(int argc, char *argv[])
 	int		opt;
 
 	opt = ft_opt_input_parsing(argc, argv);
-	lem_in_simple(opt);
+	if (lem_in_simple(opt) == -1)
+		return (1);
 	return (0);
 }

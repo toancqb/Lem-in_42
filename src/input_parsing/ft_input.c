@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 13:10:47 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/11 14:40:44 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/16 15:07:32 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int ft_input_parsing(t_global *global, int opt)
     if (!(opt & OPT_S))
       ft_putendl(line);
     free(line);
+	line = NULL;
   }
   ft_parse_room(global);
   if (ft_fin(size, &line, &input) == -1)

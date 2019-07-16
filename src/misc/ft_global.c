@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 11:08:29 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/12 16:20:16 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/16 14:17:55 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void ft_global_free(t_global **global)
   if (g->working_path)
   {
     i = 0;
-    while (g->working_path[i] != NULL)
+    while (i < g->nb_room)
     {
       free(g->working_path[i]);
       i++;
