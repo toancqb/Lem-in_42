@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 11:10:00 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/12 11:10:02 by qtran            ###   ########.fr       */
+/*   Updated: 2019/07/16 16:10:43 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int ft_is_double_room(t_global *g, char *tmp)
+int			ft_is_double_room(t_global *g, char *tmp)
 {
-  t_roomlst *rlst;
+	t_roomlst *rlst;
 
-  rlst = *(g->r_tmp);
-  while (rlst != NULL)
-  {
-    if (!(ft_strcmp(rlst->r->name, tmp)))
-      return (0);
-    rlst = rlst->next;
-  }
-  return (1);
+	rlst = *(g->r_tmp);
+	while (rlst != NULL)
+	{
+		if (!(ft_strcmp(rlst->r->name, tmp)))
+			return (0);
+		rlst = rlst->next;
+	}
+	return (1);
 }
 
-int	is_in_intmax(const char *str)
+int			is_in_intmax(const char *str)
 {
 	int			i;
 	long long	nb;
@@ -55,35 +55,41 @@ int	is_in_intmax(const char *str)
 	return (1);
 }
 
-int ft_check_format_line(char *line, t_input *input)
+static int	ft_is_empty_line(char *line, t_input *input)
 {
-  int c;
+	if (line && line[0] == '\0')
+	{
+		input->check = 1;
+		return (1);
+	}
+	return (0);
+}
 
-  if (line[0] == '\0')
-  {
-    input->check = 1;
-    return (0);
-  }
-  c = is_nb_ant(line);
-  if (c == -1)
-  {
-    input->check = 1;
-    return (-1);
-  }
-  else if (c)
-    return (1);
-  if (is_command(line))
-    return (2);
-  c = is_room(line);
-  if (c == -1)
-  {
-    input->check = 1;
-    return (-1);
-  }
-  else if (is_room(line))
-    return (3);
-  if (is_link(line))
-    return (4);
-  input->check = 1;
-  return (0);
+int			ft_check_format_line(char *line, t_input *input)
+{
+	int		c;
+
+	if (ft_is_empty_line(line, input) == 1)
+		return (0);
+	if ((c = is_nb_ant(line)) == -1)
+	{
+		input->check = 1;
+		return (-1);
+	}
+	else if (c)
+		return (1);
+	if (is_command(line))
+		return (2);
+	c = is_room(line);
+	if (c == -1)
+	{
+		input->check = 1;
+		return (-1);
+	}
+	else if (is_room(line))
+		return (3);
+	if (is_link(line))
+		return (4);
+	input->check = 1;
+	return (0);
 }

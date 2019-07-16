@@ -6,7 +6,7 @@
 #    By: gly <marvin@42.fr>                         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/02 09:45:18 by gly               #+#    #+#              #
-#    Updated: 2019/07/11 14:38:51 by gly              ###   ########.fr        #
+#    Updated: 2019/07/16 16:57:16 by gly              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SRC_MAIN_PATH = main_function/
 SRC_MAIN = \
 	main.c \
 	ft_print_solution.c \
-	print_lem_in.c 
+	print_lem_in.c \
+	ft_ant.c
 
 SRC_SOLUTION_PATH = find_solution/
 SRC_SOLUTION = \
@@ -63,6 +64,7 @@ SRC_INPUT = \
 	ft_detect.c \
 	ft_input.c \
 	ft_input_parsing.c \
+	ft_parse_room_tmp.c \
 	ft_tools.c \
 	ft_toolss.c
 
@@ -103,4 +105,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re $(NAME)
+.PHONY : all clean fclean re
