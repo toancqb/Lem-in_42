@@ -6,7 +6,7 @@
 /*   By: qtran <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 11:24:47 by qtran             #+#    #+#             */
-/*   Updated: 2019/07/16 16:56:37 by gly              ###   ########.fr       */
+/*   Updated: 2019/07/18 11:32:50 by gly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,12 +118,13 @@ int						is_link(char *line);
 int						ft_parse_nb_ant(char *line, t_global *global,
 		t_input *input);
 void					ft_parse_command(char *line, t_input *input);
-int						ft_pr_tmp(char *line, t_global *global,
-		t_input *input);
-int						ft_p_l(char *line, t_global *global,
-		t_input *input);
 void					ft_parse_room(t_global *global);
+int						ft_parse_link(char *line, t_global *global,
+		t_input *input);
 int						ft_db_room(t_global *g, char **tmp, t_input *input);
+int						ft_parse_room_tmp(char *line, t_global *global,
+		t_input *input);
+
 
 void					ft_print_solution(t_solution *sol);
 int						print_lem_in_simple(t_global *g);
